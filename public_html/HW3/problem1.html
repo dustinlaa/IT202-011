@@ -8,13 +8,20 @@
         window.addEventListener("load", () => {
             console.log("loaded via javascript");
             //TODO: add any extra onload processing you may need here
+
         });
-        function getCurrentSelection() {
+ 
+        function getCurrentSelection(event) {
             setTimeout(() => {
                 //added this delay here as some solutions may require it to update properly (i.e., click code may complete before the navigation changes)
                 //TODO: add code for processing the current selection 
 
+                /* onclick method
+                * h1.inner and set equal to link (this.link)
+                */
+                onclicktext = payhref.get('click');
                 //Note: likely you'll want to call updateCurrentPage towards the end
+                updateCurrentPage(onclicktext);
             }, 100);
         }
     </script>
@@ -57,13 +64,22 @@
         a {
             text-transform: capitalize;
         }
-        li:before {
-            content: '✓';
+
+         /* Change the "bullet points" of this entire list to checkmarks (✓) */
+        body>ul>li {
+            list-style: '✓';
+        }
+        body>ul>li>ul>li {
+            list-style: '✓';
         }
 
         /* Custom styling */
-        body {background-color: powderblue;}
+        body {
+            background-color: peachpuff;
+        }
+
     </style>
+
     <!-- make the necessary edits above this line -->
 
 
