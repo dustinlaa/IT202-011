@@ -16,10 +16,10 @@
                 //added this delay here as some solutions may require it to update properly (i.e., click code may complete before the navigation changes)
                 //TODO: add code for processing the current selection 
 
-                /* onclick method
-                * h1.inner and set equal to link (this.link)
-                */
-                onclicktext = payhref.get('click');
+                var navElements = document.querySelectorAll("nav > ul > li > a"); //find the elements
+                for (let i = 0; i < navElements.length; i++) { //loop over the elements
+                    navElements[i].addEventListener("click", getCurrentSelection); //applying click handler
+                }
                 //Note: likely you'll want to call updateCurrentPage towards the end
                 updateCurrentPage(onclicktext);
             }, 100);
