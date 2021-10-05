@@ -9,6 +9,7 @@
             console.log("loaded via javascript");
             //TODO: add any extra onload processing you may need here
             var navElements = document.querySelectorAll("nav > ul > li > a"); //find the elements
+            // element.getElementsByTagName(tagName) (another method if this doesnt work), maybe switch tag with just "a" as well
             for (let i = 0; i < navElements.length; i++) { //loop over the elements
                 navElements[i].addEventListener("click", getCurrentSelection); //applying click handler
             }
@@ -19,10 +20,10 @@
             setTimeout(() => {
                 //added this delay here as some solutions may require it to update properly (i.e., click code may complete before the navigation changes)
                 //TODO: add code for processing the current selection 
-
-
+                var newText = document.getElementById("nav > ul > li > a").innerHTML;
+                console.log(newText); // just for testing
                 //Note: likely you'll want to call updateCurrentPage towards the end
-
+                updateCurrentPage(newText);
             }, 100);
         }
     </script>
