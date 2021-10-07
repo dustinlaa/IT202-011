@@ -8,34 +8,80 @@
         window.addEventListener("load", () => {
             console.log("loaded via javascript");
             //TODO: add any extra onload processing you may need here
+            var navElements = document.querySelectorAll("nav > ul > li > a"); //find the elements
+            // element.getElementsByTagName(tagName) (another method if this doesnt work), maybe switch tag with just "a" as well
+            for (let i = 0; i < navElements.length; i++) { //loop over the elements
+                navElements[i].addEventListener("click", getCurrentSelection); //applying click handler
+            }
+
         });
+ 
         function getCurrentSelection() {
             setTimeout(() => {
                 //added this delay here as some solutions may require it to update properly (i.e., click code may complete before the navigation changes)
                 //TODO: add code for processing the current selection 
-
+                var newText = document.getElementById("nav > ul > li > a").innerHTML;
+                console.log(newText); // just for testing
                 //Note: likely you'll want to call updateCurrentPage towards the end
+                updateCurrentPage(newText);
             }, 100);
         }
     </script>
     <style>
         /* TODO: make edits here */
-
-        /* Made navigation horizontal & removed navigation item list markers*/
-        nav ul li{  
-            display: inline-block;
-        }
-        li {
+        
+        /* Made navigation bar horizontal */
+        nav li {
             float: left;
         }
+        /* Removed navigation item list markers */
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        /* Navigation bar background */
         a {
             display: block;
-            padding: 16px;
+            padding: 8px;
             background-color: #dddddd;
-        }       
-        
+        }
+
+        /* Change color of links on mouse over */
+        li a:hover {
+            background-color: paleturquoise;    
+        }
+
+        /* Change the "bullet points" of this entire list to checkmarks */
+        ul {
+            list-style: none;
+        }
+
+
+        /* Use CSS to uppercase the first character of the content in the <h1> tag and the <a> tags */
+        h1 {
+            text-transform: capitalize;
+        }
+        a {
+            text-transform: capitalize;
+        }
+
+         /* Change the "bullet points" of this entire list to checkmarks (✓) */
+        body>ul>li {
+            list-style: '✓';
+        }
+        body>ul>li>ul>li {
+            list-style: '✓';
+        }
+
+        /* Custom styling */
+        body {
+            background-color: peachpuff;
+        }
 
     </style>
+
     <!-- make the necessary edits above this line -->
 
 
