@@ -14,6 +14,10 @@
         <label for="confirm">Confirm</label>
         <input type="password" name="confirm" required minlength="8" />
     </div>
+    <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" required wavelength="30" />
+    </div>
     <input type="submit" value="Register" />
 </form>
 <script>
@@ -32,6 +36,7 @@
     //same as above but for password and confirm
     $password = se($_POST, "password", "", false);
     $confirm = se($_POST, "confirm", "", false);
+    $username = se($_POST, "username", "", false);
     //TODO 3: validate/use
     $errors = [];
     if(empty($email)){
@@ -41,6 +46,9 @@
     //$email = filter_var($email, FILTER_SANITIZE_EMAIL);
     $email = sanitize_email($email);
     //validate
+    if(!preg_match('/^[a-z0-9_-]{3,30}$/', $username)){
+        flash("Invalid username, must be alphanumeric and only contain letters and numbers");
+    }
     if(!is_valid_email($email)){
     //if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
        flash("Invalid email address");
@@ -65,9 +73,9 @@
         //TODO 4
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $db = getDB();
-        $stmt = $db->prepare("INSERT INTO Users (email, password) VALUES (:email, :password)");
+        $stmt = $db->prepare("INSERT INTO Users (email, password, username) VALUES (:email, :password, :username)");
         try {
-            $stmt->execute([":email" => $email, ":password" => $hash]);
+            $stmt->execute([":email" => $email, ":password" => $hash, "username" => $username]);
             flash("You've been registered!");
         } catch (Exception $e) {
             flash("There was a problem registering");
