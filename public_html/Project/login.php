@@ -19,6 +19,7 @@ require(__DIR__."/../../partials/nav.php");?>
         return true;
     }
 </script>
+
 <?php
  //TODO 2: add PHP Code
  if(isset($_POST["email"]) && isset($_POST["password"])){
