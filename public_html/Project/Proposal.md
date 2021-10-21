@@ -2,7 +2,7 @@
 ## Project Summary: This project will create a simple Arcade with scoreboards and competitions based on the implemented game.
 ## Github Link:
 ## Website Link:
-## Your Name:
+## Your Name: Dustin La
 
 
 <!--
