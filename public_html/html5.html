@@ -27,6 +27,12 @@ var y = 100; // Y position
 var speed = 6; // Distance to move each frame
 var sideLength = 50; // Length of each side of the square
 
+// Enemy
+var enemyX = 500; // X position
+var enemyY = 300; // Y position
+var enemyspeed = 2; // Distance to move each frame
+var enemySideLength = 50; // Length of each side of the square
+
 // FLags to track which keys are pressed
 var down = false;
 var up = false;
@@ -105,13 +111,13 @@ function menu() {
   context.fillText('Gold Square = 3 points', canvas.width / 2, canvas.height / 1.8);
   context.font = '24px Arial';
   context.fillStyle = '#000000';
-  context.fillText('Click to Start', canvas.width / 2, canvas.height / 1.5);
+  context.fillText('Avoid the black square enemy!', canvas.width / 2, canvas.height / 1.55);
+  context.fillText('Click to Start', canvas.width / 2, canvas.height / 1.35);
   context.font = '18px Arial'
-  context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 4) * 3);
+  context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 3.5) * 3);
   // Start the game on a click
   canvas.addEventListener('click', startGame);
 }
-
 // Start the game
 function startGame() {
 	// Reduce the countdown timer ever second
@@ -140,16 +146,17 @@ function endGame() {
 
 // Move the target square to a random position
 function moveTarget() {
-  //1 pt block
+  // 1 pt block
   targetX = Math.round(Math.random() * canvas.width - targetLength);
   targetY = Math.round(Math.random() * canvas.height - targetLength);
-  //2 pt block
+  // 2 pt block
   targetX2 = Math.round(Math.random() * canvas.width - targetLength);
   targetY2 = Math.round(Math.random() * canvas.height - targetLength);
-  //3 pt block
+  // 3 pt block
   targetX3 = Math.round(Math.random() * canvas.width - targetLength);
   targetY3 = Math.round(Math.random() * canvas.height - targetLength);
 }
+
 
 // Clear the canvas
 function erase() {
@@ -186,8 +193,22 @@ function draw() {
   if (x + sideLength > canvas.width) {
     x = canvas.width - sideLength;
   }
+  // Moves enemy towards player
+  if (x > enemyX) {
+    enemyX += enemyspeed;
+  }
+  if (x < enemyX) {
+    enemyX -= enemyspeed;
+  }
+  if (y > enemyY) {
+    enemyY += enemyspeed;
+  }
+  if (y< enemyY) {
+    enemyY -= enemyspeed;
+  }
+
   // Collide with the target
-  //1 pt block collision
+  // 1 pt block collision
   if (isWithin(targetX, x, x + sideLength) || isWithin(targetX + targetLength, x, x + sideLength)) { // X
     if (isWithin(targetY, y, y + sideLength) || isWithin(targetY + targetLength, y, y + sideLength)) { // Y
       // Respawn the target
@@ -196,7 +217,7 @@ function draw() {
       score++;
     }
   }
-  //2 pt block collision
+  // 2 pt block collision
   if (isWithin(targetX2, x, x + sideLength) || isWithin(targetX2 + targetLength, x, x + sideLength)) { // X
     if (isWithin(targetY2, y, y + sideLength) || isWithin(targetY2 + targetLength, y, y + sideLength)) { // Y
       // Respawn the target
@@ -205,7 +226,7 @@ function draw() {
       score += 2;
     }
   }
-  //3 pt block collision
+  // 3 pt block collision
   if (isWithin(targetX3, x, x + sideLength) || isWithin(targetX3 + targetLength, x, x + sideLength)) { // X
     if (isWithin(targetY3, y, y + sideLength) || isWithin(targetY3 + targetLength, y, y + sideLength)) { // Y
       // Respawn the target
@@ -214,11 +235,19 @@ function draw() {
       score += 3;
     }
   }
+  // Enemy collision
+  if (isWithin(enemyX, x, x + sideLength) || isWithin(enemyX+ targetLength, x, x + sideLength)) { // X
+    if (isWithin(enemyY, y, y + sideLength) || isWithin(enemyY + targetLength, y, y + sideLength)) { // Y
+      countdown = 0;
+    }
+  }
+
   // Draw the square
   context.fillStyle = '#FF0000';
   context.fillRect(x, y, sideLength, sideLength);
   // Draw the target 
-
+  context.fillStyle = '#000000';
+  context.fillRect(enemyX, enemyY, enemySideLength, enemySideLength);
   //draw 1 pt block
   context.fillStyle = '#00FF00';
   context.fillRect(targetX, targetY, targetLength, targetLength);
