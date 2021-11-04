@@ -1,4 +1,14 @@
 
+<canvas id="canvas" width="600" height="400" tabindex="1"></canvas>
+
+<style>
+    #canvas {
+    width: 600px;
+    height: 400px;
+    border: 1px solid black;
+  }
+
+</style>
 
 <script>
 // Collect The Square game
@@ -26,6 +36,8 @@ var left = false;
 // Properties for the target square
 var targetX = 0;
 var targetY = 0;
+var targetX2 = 0;
+var targetY2 = 0;
 var targetLength = 25;
 
 // Determine if number a is within the range b to c (exclusive)
@@ -117,8 +129,15 @@ function endGame() {
 
 // Move the target square to a random position
 function moveTarget() {
+  //1 pt block
   targetX = Math.round(Math.random() * canvas.width - targetLength);
-  targetY = Math.round(Math.random() * canvas.height - targetLength)
+  targetY = Math.round(Math.random() * canvas.height - targetLength);
+  //2 pt block
+  targetX2 = Math.round(Math.random() * canvas.width - targetLength);
+  targetY2 = Math.round(Math.random() * canvas.height - targetLength);
+  //3 pt block
+  targetX3 = Math.round(Math.random() * canvas.width - targetLength);
+  targetY3 = Math.round(Math.random() * canvas.height - targetLength);
 }
 
 // Clear the canvas
@@ -157,6 +176,7 @@ function draw() {
     x = canvas.width - sideLength;
   }
   // Collide with the target
+  //1 pt block collision
   if (isWithin(targetX, x, x + sideLength) || isWithin(targetX + targetLength, x, x + sideLength)) { // X
     if (isWithin(targetY, y, y + sideLength) || isWithin(targetY + targetLength, y, y + sideLength)) { // Y
       // Respawn the target
@@ -165,12 +185,41 @@ function draw() {
       score++;
     }
   }
+  //2 pt block collision
+  if (isWithin(targetX2, x, x + sideLength) || isWithin(targetX2 + targetLength, x, x + sideLength)) { // X
+    if (isWithin(targetY2, y, y + sideLength) || isWithin(targetY2 + targetLength, y, y + sideLength)) { // Y
+      // Respawn the target
+      moveTarget();
+      // Increase the score
+      score += 2;
+    }
+  }
+  //3 pt block collision
+  if (isWithin(targetX3, x, x + sideLength) || isWithin(targetX3 + targetLength, x, x + sideLength)) { // X
+    if (isWithin(targetY3, y, y + sideLength) || isWithin(targetY3 + targetLength, y, y + sideLength)) { // Y
+      // Respawn the target
+      moveTarget();
+      // Increase the score
+      score += 3;
+    }
+  }
   // Draw the square
   context.fillStyle = '#FF0000';
   context.fillRect(x, y, sideLength, sideLength);
   // Draw the target 
+
+  //draw 1 pt block
   context.fillStyle = '#00FF00';
   context.fillRect(targetX, targetY, targetLength, targetLength);
+
+  //draw 2 pt block
+  context.fillStyle = '#00F7FF';
+  context.fillRect(targetX2, targetY2, targetLength, targetLength);
+
+  //draw 3 pt block
+  context.fillStyle = '#FFDD00';
+  context.fillRect(targetX3, targetY3, targetLength, targetLength);
+
   // Draw the score and time remaining
   context.fillStyle = '#000000';
   context.font = '24px Arial';
