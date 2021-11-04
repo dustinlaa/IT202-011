@@ -38,6 +38,8 @@ var targetX = 0;
 var targetY = 0;
 var targetX2 = 0;
 var targetY2 = 0;
+var targetX3 = 0;
+var targetY3 = 0;
 var targetLength = 25;
 
 // Determine if number a is within the range b to c (exclusive)
@@ -94,7 +96,16 @@ function menu() {
   context.textAlign = 'center';
   context.fillText('Collect the Square!', canvas.width / 2, canvas.height / 4);
   context.font = '24px Arial';
-  context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
+  context.textAlign = 'center';
+  context.fillStyle = '#00FF00';
+  context.fillText('Green Square = 1 point', canvas.width / 2, canvas.height / 2.5);
+  context.fillStyle = '#00F7FF';
+  context.fillText('Blue Square = 2 points', canvas.width / 2, canvas.height / 2.1);
+  context.fillStyle = '#FFDD00';
+  context.fillText('Gold Square = 3 points', canvas.width / 2, canvas.height / 1.8);
+  context.font = '24px Arial';
+  context.fillStyle = '#000000';
+  context.fillText('Click to Start', canvas.width / 2, canvas.height / 1.5);
   context.font = '18px Arial'
   context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 4) * 3);
   // Start the game on a click
