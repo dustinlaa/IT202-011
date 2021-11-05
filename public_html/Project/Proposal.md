@@ -32,6 +32,7 @@
       - https://github.com/dustinlaa/IT202-011/pull/27
     - Screenshots
       - Screenshot #1
+      - ![image](https://user-images.githubusercontent.com/71194959/140587723-24f4b0b9-055a-4107-8652-91ae8ef8b23e.png)
         - Screenshot #1 description explaining what you're trying to show
 
 - [ ] \(mm/dd/yyyy of completion) User will be able to login to their account (given they enter the correct credentials)
