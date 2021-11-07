@@ -24,40 +24,44 @@
 
 - Milestone 1
 
-- [x] \(11/05/2021 of completion) User will be able to register a new account
+- [ ] \(mm/dd/yyyy of completion) User will be able to register a new account
   -  List of Evidence of Feature Completion
-    - Status: Completed
+    - Status: Pending
     - Direct Link: https://drl3-prod.herokuapp.com/Project/register.php 
     - Pull Requests
       - https://github.com/dustinlaa/IT202-011/pull/27
     - Screenshots
       - Screenshot #1
-      - ![image](https://user-images.githubusercontent.com/71194959/140587723-24f4b0b9-055a-4107-8652-91ae8ef8b23e.png)
-        - Screenshot #1 description explaining what you're trying to show
-          - Successful registration of a new account on the register page.
+        - ![image](https://user-images.githubusercontent.com/71194959/140587723-24f4b0b9-055a-4107-8652-91ae8ef8b23e.png)
+          - Screenshot #1 Description:
+            - Successful registration of a new account on the register page.
       - Screenshot #2
-      - ![image](https://user-images.githubusercontent.com/71194959/140589996-a5a1ed54-655d-4196-a27e-718196275d18.png)
-        - Screenshot #2 description
-          - Registering an email that already has an account.
+        - ![image](https://user-images.githubusercontent.com/71194959/140589996-a5a1ed54-655d-4196-a27e-718196275d18.png)
+          - Screenshot #2 Description:
+            - Registering an email that already has an account.
       - Screenshot #3
-      - ![image](https://user-images.githubusercontent.com/71194959/140590101-fa6ad509-77be-4bcb-8494-e9a499766f48.png)
-        - Screenshot #3 description
-          - Registering a username that already has an account.
+        - ![image](https://user-images.githubusercontent.com/71194959/140590101-fa6ad509-77be-4bcb-8494-e9a499766f48.png)
+          - Screenshot #3 Description:
+            - Registering a username that already has an account.
 
 - [ ] \(mm/dd/yyyy of completion) User will be able to login to their account (given they enter the correct credentials)
   -  List of Evidence of Feature Completion
     - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for qu21ick testing (even if it's a protected page))
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
     - Pull Requests 
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/27
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 
+        - ![image](https://user-images.githubusercontent.com/71194959/140621831-e795bfa3-e550-4a27-91d8-080f60162281.png)
+          - Screenshot #1 Description: 
+            - Successful login with a registered user.
+      - Screenshot #2
+        - 
 
 - [ ] \(mm/dd/yyyy of completion) User will be able to logout
   -  List of Evidence of Feature Completion
     - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/logout.php
     - Pull Requests
       - PR link #1 (repeat as necessary)
     - Screenshots
