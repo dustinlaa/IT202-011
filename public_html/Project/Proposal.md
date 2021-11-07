@@ -56,7 +56,7 @@
           - Screenshot #1 Description: 
             - Successful login with a registered user.
       - Screenshot #2
-        - 
+        - test
 
 - [ ] \(mm/dd/yyyy of completion) User will be able to logout
   -  List of Evidence of Feature Completion
