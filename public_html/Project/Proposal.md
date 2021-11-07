@@ -26,67 +26,92 @@
 
 - [ ] \(mm/dd/yyyy of completion) User will be able to register a new account
   -  List of Evidence of Feature Completion
-    - Status: Pending
+    - Status: Partially Working
     - Direct Link: https://drl3-prod.herokuapp.com/Project/register.php 
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/27
+      - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
       - Screenshot #1
-        - ![image](https://user-images.githubusercontent.com/71194959/140587723-24f4b0b9-055a-4107-8652-91ae8ef8b23e.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140662932-a7a115b5-3c87-4f4d-9998-040bb0ab9217.png)
           - Screenshot #1 Description:
             - Successful registration of a new account on the register page.
       - Screenshot #2
-        - ![image](https://user-images.githubusercontent.com/71194959/140589996-a5a1ed54-655d-4196-a27e-718196275d18.png)
+        - 
           - Screenshot #2 Description:
             - Registering an email that already has an account.
       - Screenshot #3
-        - ![image](https://user-images.githubusercontent.com/71194959/140590101-fa6ad509-77be-4bcb-8494-e9a499766f48.png)
+        - 
           - Screenshot #3 Description:
             - Registering a username that already has an account.
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to login to their account (given they enter the correct credentials)
+- [x] \(11/07/2021 of completion) User will be able to login to their account (given they enter the correct credentials)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
     - Pull Requests 
-      - https://github.com/dustinlaa/IT202-011/pull/27
+      - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
       - Screenshot #1 
-        - ![image](https://user-images.githubusercontent.com/71194959/140621831-e795bfa3-e550-4a27-91d8-080f60162281.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140662999-25306f53-b93e-4583-946b-ee48b8978512.png)
           - Screenshot #1 Description: 
             - Successful login with a registered user.
       - Screenshot #2
-        - test
+        - ![image](https://user-images.githubusercontent.com/71194959/140662958-b4cd87a0-1f2e-4634-88e4-b275655c4030.png)
+          - Screenshot #2 Description:
+            - Account doesn't exist error.
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/140662971-d3792cca-c083-4178-989b-352672dbd751.png)
+          - Screenshot #3 Description:
+            - Password doesn't match error.
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to logout
+- [x] \(11/07/2021 of completion) User will be able to logout
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/logout.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-
-- [ ] \(mm/dd/yyyy of completion) Basic security rules implemented
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/140663010-d52528b4-abd2-4c8f-8a54-38c258092f46.png)
+          - Screenshot #1 Description:
+            - Successful logout with message.
   
-- [ ] \(mm/dd/yyyy of completion) Basic Roles implemented
+- [x] \(11/07/2021 of completion) Basic security rules implemented
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
+    - Pull Requests
+      - https://github.com/dustinlaa/IT202-011/pull/28
+    - Screenshots
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/140663041-85abac59-f74b-4506-9a04-f2e8e4843005.png)
+          - Screenshot #1 Description:
+            - Function checking if a user is logged in.  
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/140663029-951a31e2-f833-4fe5-8e95-82c95177911a.png)
+          - Screenshot #2 Description:
+            - Error message shown when a user is not logged in.
+
+
+- [] \(mm/dd/yyyy of completion) Basic Roles implemented
+  -  List of Evidence of Feature Completion
+    - Status: Completed
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
       - PR link #1 (repeat as necessary)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - .
+          - Screenshot #1 Description:
+            - Implementation of roles table.
+      - Screenshot #2
+        - .
+          - Screenshot #2 Description:
+            - Implementation of User Roles table.
+      - Screenshot #3
+        - .
+          - Screenshot #3 Description:
+            - Function checking if a user has a specific role.
   
 - [ ] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
   -  List of Evidence of Feature Completion
@@ -94,9 +119,10 @@
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
       - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - .
+          - Screenshot #1 Description:
+            - Page styled and customized.
   
 - [ ] \(mm/dd/yyyy of completion) Any output messages/errors should be “user friendly”
   -  List of Evidence of Feature Completion
@@ -108,25 +134,29 @@
       - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
         - Screenshot #1 description explaining what you're trying to show
 
-- [ ] \(mm/dd/yyyy of completion) User will be able to see their profile
+- [x] \(11/07/2021 of completion) User will be able to see their profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-
-- [ ] \(mm/dd/yyyy of completion) User will be able to edit their profile
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/140663249-58bd735f-d8b4-4fd3-b208-0ad38f3d4274.png)
+          - Screenshot #1 Description:
+            - User's profile screen allowing the user to see their email and username.
+  
+- [x] \(11/07/2021 of completion) User will be able to edit their profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/140663283-a13cb9fa-a510-4fdb-8496-1a3a1e8ae1bc.png)
+          - Screenshot #1 Descripition:
+            -  User can edit their username, email, and password and update.
 
 - Milestone 2
 
