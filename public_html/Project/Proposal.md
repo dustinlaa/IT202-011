@@ -32,7 +32,7 @@
       - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
       - Screenshot #1
-        - ![image](https://user-images.githubusercontent.com/71194959/140662932-a7a115b5-3c87-4f4d-9998-040bb0ab9217.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140663633-98efea52-eb7e-46bf-9a46-77a0e9f79be5.png)
           - Screenshot #1 Description:
             - Successful registration of a new account on the register page.
       - Screenshot #2
@@ -52,15 +52,15 @@
       - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
       - Screenshot #1 
-        - ![image](https://user-images.githubusercontent.com/71194959/140662999-25306f53-b93e-4583-946b-ee48b8978512.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140663652-371676af-455c-4d9b-936a-a15721e423ef.png)
           - Screenshot #1 Description: 
             - Successful login with a registered user.
       - Screenshot #2
-        - ![image](https://user-images.githubusercontent.com/71194959/140662958-b4cd87a0-1f2e-4634-88e4-b275655c4030.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140663680-1a06b4d7-1595-400f-a7ad-7a09dd9aa844.png)
           - Screenshot #2 Description:
             - Account doesn't exist error.
       - Screenshot #3
-        - ![image](https://user-images.githubusercontent.com/71194959/140662971-d3792cca-c083-4178-989b-352672dbd751.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140663696-487bb368-290c-4727-ab5c-cf3f5bc8d853.png)
           - Screenshot #3 Description:
             - Password doesn't match error.
 
@@ -72,7 +72,7 @@
       - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
       - Screenshot #1
-        - ![image](https://user-images.githubusercontent.com/71194959/140663010-d52528b4-abd2-4c8f-8a54-38c258092f46.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140663716-19d86714-410c-4300-8ed2-196f5fd3a139.png)
           - Screenshot #1 Description:
             - Successful logout with message.
   
@@ -88,7 +88,7 @@
           - Screenshot #1 Description:
             - Function checking if a user is logged in.  
       - Screenshot #2
-        - ![image](https://user-images.githubusercontent.com/71194959/140663029-951a31e2-f833-4fe5-8e95-82c95177911a.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140663743-f1f64f02-e5c8-4aa6-a634-7349c7b9e07d.png)
           - Screenshot #2 Description:
             - Error message shown when a user is not logged in.
 
@@ -113,26 +113,28 @@
           - Screenshot #3 Description:
             - Function checking if a user has a specific role.
   
-- [ ] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
+- [x] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
+    - Status: Completed
     - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/28
       - Screenshot #1
         - .
           - Screenshot #1 Description:
             - Page styled and customized.
   
-- [ ] \(mm/dd/yyyy of completion) Any output messages/errors should be “user friendly”
+- [x] \(11/07/2001 of completion) Any output messages/errors should be “user friendly”
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/140663759-71d9f2bf-9a28-4926-9c96-e68dad6b260b.png)
+          - Screenshot #1 Description:
+            - Customized site with navbar, background, and hover color. 
 
 - [x] \(11/07/2021 of completion) User will be able to see their profile
   -  List of Evidence of Feature Completion
@@ -142,7 +144,7 @@
       - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
       - Screenshot #1
-        - ![image](https://user-images.githubusercontent.com/71194959/140663249-58bd735f-d8b4-4fd3-b208-0ad38f3d4274.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/140663759-71d9f2bf-9a28-4926-9c96-e68dad6b260b.png)
           - Screenshot #1 Description:
             - User's profile screen allowing the user to see their email and username.
   
@@ -157,6 +159,16 @@
         - ![image](https://user-images.githubusercontent.com/71194959/140663283-a13cb9fa-a510-4fdb-8496-1a3a1e8ae1bc.png)
           - Screenshot #1 Descripition:
             -  User can edit their username, email, and password and update.
+      - Screenshot #2 
+        - ![image](https://user-images.githubusercontent.com/71194959/140663792-25487e0f-b725-4012-bd8d-33b0fd47a369.png)
+          - New passwords do not match.
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/140663872-4445a03a-db11-4398-ab81-980b35d67d33.png)
+          - Email already exists.
+      - Screenshot #4
+        - ![image](https://user-images.githubusercontent.com/71194959/140663898-ef3dcc6d-2d91-465a-8fe9-586ac66cc0dd.png)
+          - Username already exists.
+
 
 - Milestone 2
 
