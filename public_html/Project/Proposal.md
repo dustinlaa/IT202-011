@@ -154,7 +154,8 @@
       - https://github.com/dustinlaa/IT202-011/pull/28
     - Screenshots
       - Screenshot #1
-        - ![image](https://user-images.githubusercontent.com/71194959/141038783-a68e6c80-09c1-4deb-a790-896f42d3fb92.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/141040716-cd867f55-e06a-4845-9f4c-0d2476eb4f84.png)
+
 
           - Screenshot #1 Description:
             - User's profile screen allowing the user to see their email and username.
