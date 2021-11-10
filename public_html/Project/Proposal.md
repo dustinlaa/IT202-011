@@ -109,7 +109,7 @@
           - Screenshot #2 Description:
             - Implementation of User Roles table.
       - Screenshot #3
-        - .
+        - 
           - Screenshot #3 Description:
             - Function checking if a user has a specific role.
   
