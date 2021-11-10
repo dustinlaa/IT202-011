@@ -1,6 +1,7 @@
-## Project Name: Simple Arcade
+# Project Name: Simple Arcade
 ## Project Summary: This project will create a simple Arcade with scoreboards and competitions based on the implemented game.
 ## Github Link: https://github.com/dustinlaa/IT202-011/tree/prod/public_html/Project
+## Project Board Link: https://github.com/dustinlaa/IT202-011/projects/2
 ## Website Link: https://drl3-prod.herokuapp.com/Project/login.php
 ## Your Name: Dustin La
 
