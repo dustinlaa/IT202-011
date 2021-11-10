@@ -155,8 +155,6 @@
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/141040716-cd867f55-e06a-4845-9f4c-0d2476eb4f84.png)
-
-
           - Screenshot #1 Description:
             - User's profile screen allowing the user to see their email and username.
   
@@ -173,13 +171,16 @@
             -  User can edit their username, email, and password.
       - Screenshot #2 
         - ![image](https://user-images.githubusercontent.com/71194959/140663792-25487e0f-b725-4012-bd8d-33b0fd47a369.png)
-          - New passwords do not match.
+          - Screenshot #2 Description:
+            - New passwords do not match.
       - Screenshot #3
         - ![image](https://user-images.githubusercontent.com/71194959/140663872-4445a03a-db11-4398-ab81-980b35d67d33.png)
-          - Email already exists.
+          - Screenshot #3 Description:
+            - Email already exists.
       - Screenshot #4
         - ![image](https://user-images.githubusercontent.com/71194959/140663898-ef3dcc6d-2d91-465a-8fe9-586ac66cc0dd.png)
-          - Username already exists.
+          - Screenshot #4 Description:
+            - Username already exists.
 
 - Milestone 2
 - Milestone 3
