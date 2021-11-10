@@ -1,7 +1,7 @@
 ## Project Name: Simple Arcade
 ## Project Summary: This project will create a simple Arcade with scoreboards and competitions based on the implemented game.
-## Github Link:
-## Website Link:
+## Github Link: https://github.com/dustinlaa/IT202-011/tree/Milestone1/public_html/Project
+## Website Link: https://drl3-prod.herokuapp.com/Project/login.php
 ## Your Name: Dustin La
 
 
@@ -40,7 +40,7 @@
           - Screenshot #2 Description:
             - Unsuccessful registration because email already exists.
       - Screenshot #3
-        - ![image](https://user-images.githubusercontent.com/71194959/141035517-db8d5daa-6a98-4f04-b1fe-db4eb7e501ee.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/141040190-53ec9a3a-785e-4956-9ea4-22acaef0eb11.png)
           - Screenshot #3 Description:
             - Unsuccessful registration because username already exists. 
       - Screenshot #4
@@ -121,7 +121,7 @@
           - Screenshot #4 Description:
             - Function checking if a user has a specific role.
   
-- [x] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
+- [x] \(11/07/2021 of completion) Site should have basic styles/theme applied; everything should be styled
   -  List of Evidence of Feature Completion
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
