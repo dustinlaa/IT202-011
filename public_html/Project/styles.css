@@ -1,0 +1,36 @@
+.alert-success {
+    background-color: limegreen;
+    color:white
+}
+
+.alert-warning {
+    background-color:  orange;
+    color:white
+}
+
+.alert-danger {
+    background-color: red;
+    color:white
+}
+
+.alert-info {
+    background-color: teal;
+}
+nav li{display: inline; background-color: #212529; font-size: 20px;}
+nav li a{color:white}
+li a:hover {
+    background-color:forestgreen;
+}
+input {
+    border: solid 2px;
+    border-radius: 15px 50px 30px 5px;
+    font-size: 15px;
+}
+body{
+    background-image: linear-gradient(to right, royalblue, powderblue);
+    color:white;
+    font-size: 15px;
+
+}
+
+.dropdown-menu li>a{color:white; }
