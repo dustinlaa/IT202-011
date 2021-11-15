@@ -85,6 +85,7 @@
   -  List of Evidence of Feature Completion
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
+      - https://github.com/dustinlaa/IT202-011/blob/dev/lib/functions.php
     - Pull Requests
       - https://github.com/dustinlaa/IT202-011/pull/56
     - Screenshots
@@ -126,6 +127,7 @@
   -  List of Evidence of Feature Completion
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
+       - https://github.com/dustinlaa/IT202-011/blob/Milestone1/public_html/Project/styles.css
     - Pull Requests
       - https://github.com/dustinlaa/IT202-011/pull/57
       - Screenshot #1
@@ -138,7 +140,6 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/logout.php
       - https://drl3-prod.herokuapp.com/Project/login.php
-      - https://github.com/dustinlaa/IT202-011/blob/Milestone1/public_html/Project/styles.css
     - Pull Requests
       - https://github.com/dustinlaa/IT202-011/pull/56
     - Screenshots
