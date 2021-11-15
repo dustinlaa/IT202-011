@@ -30,7 +30,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/register.php
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/39
+      - https://github.com/dustinlaa/IT202-011/pull/55
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/141035355-3abb7ebe-6398-4414-92cf-c1616f78d2a2.png)
@@ -54,7 +54,7 @@
     - Status: Complete
     - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
     - Pull Requests 
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/55
     - Screenshots
       - Screenshot #1 
         - ![image](https://user-images.githubusercontent.com/71194959/140663652-371676af-455c-4d9b-936a-a15721e423ef.png)
@@ -74,7 +74,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/logout.php
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/55
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/140663716-19d86714-410c-4300-8ed2-196f5fd3a139.png)
@@ -86,7 +86,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/56
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/140663041-85abac59-f74b-4506-9a04-f2e8e4843005.png)
@@ -103,7 +103,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/admin/list_roles.php
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/56
     - Screenshots
       -  Screenshot #1
        - ![image](https://user-images.githubusercontent.com/71194959/141037151-97d20306-cf69-4b97-a1cd-77eaf75422a0.png)
@@ -127,7 +127,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/57
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/141038010-ad9d904a-58bd-414a-bac8-8fbfc265c989.png)
           - Screenshot #1 Description:
@@ -140,7 +140,7 @@
       - https://drl3-prod.herokuapp.com/Project/login.php
       - https://github.com/dustinlaa/IT202-011/blob/Milestone1/public_html/Project/styles.css
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/56
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/141037825-9b503183-aaf6-4b5d-af14-32f4e17134ed.png)
@@ -152,7 +152,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/57
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/141040716-cd867f55-e06a-4845-9f4c-0d2476eb4f84.png)
@@ -164,7 +164,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/28
+      - https://github.com/dustinlaa/IT202-011/pull/57
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/141039782-4faa43a9-2161-423d-9f83-1c7be05b47a3.png)
