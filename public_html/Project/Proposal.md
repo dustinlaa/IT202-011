@@ -51,7 +51,7 @@
   
 - [x] \(11/07/2021 of completion) User will be able to login to their account (given they enter the correct credentials)
   -  List of Evidence of Feature Completion
-    - Status: Complete
+    - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/login.php
     - Pull Requests 
       - https://github.com/dustinlaa/IT202-011/pull/55
