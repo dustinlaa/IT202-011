@@ -46,8 +46,12 @@
             - Unsuccessful registration because username already exists. 
       - Screenshot #4
         - ![image](https://user-images.githubusercontent.com/71194959/141035517-db8d5daa-6a98-4f04-b1fe-db4eb7e501ee.png)
-          - Screenshot #3 Description:
+          - Screenshot #4 Description:
             - Unsuccessful registration because password does not match
+      - Screenshot #5
+        - ![image](https://user-images.githubusercontent.com/71194959/142250372-fd9223b1-beaa-48ce-9782-c1f0f5cbdacb.png)
+          - Screenshot #5 Description:
+            - User Table 
   
 - [x] \(11/07/2021 of completion) User will be able to login to their account (given they enter the correct credentials)
   -  List of Evidence of Feature Completion
@@ -68,6 +72,10 @@
         - ![image](https://user-images.githubusercontent.com/71194959/140663696-487bb368-290c-4727-ab5c-cf3f5bc8d853.png)
           - Screenshot #3 Description:
             - Password doesn't match error.
+      - Screenshot #4
+        - ![image](https://user-images.githubusercontent.com/71194959/140663743-f1f64f02-e5c8-4aa6-a634-7349c7b9e07d.png)
+          - Screenshot #4 Description:
+            - Non-logged in users are unable to see protected pages.
 
 - [x] \(11/07/2021 of completion) User will be able to logout
   -  List of Evidence of Feature Completion
