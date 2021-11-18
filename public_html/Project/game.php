@@ -1,3 +1,11 @@
+
+<?php
+require(__DIR__ . "/../../partials/nav.php");
+?>
+<html>
+    <div style = "text-align:center;">
+</html>
+
 <canvas id="canvas" width="600" height="400" tabindex="1"></canvas>
 
 <style>
