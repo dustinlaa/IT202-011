@@ -150,9 +150,43 @@ function endGame() {
   context.textAlign = 'center';
   context.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 2);
   let data = {
-    score : score,
+    score : score
   }
-
+  //fetch api way
+  /*
+  fetch("api/save_score.php", {
+    method: "POST",
+    headers: {
+        "Content-type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+    },
+    body: JSON.stringify({
+        "data": data
+    })
+  }).then(async res => {
+    let data = await res.json();
+    console.log("received data", data);
+    console.log("saved score");
+    //window.location.reload(); //lazily reloading the page to get a new nonce for next game
+  })
+  */
+  //jquery way
+  $.ajax({
+    type: "POST",
+    url: "api/save_score.php",
+    contentType: "application/json",
+    data: JSON.stringify({
+        data: data
+    }),
+    success: (resp, status, xhr) => {
+        console.log(resp, status, xhr);
+        //window.location.reload(); //lazily reloading the page to get a new nonce for next game
+    },
+    error: (xhr, status, error) => {
+        console.log(xhr, status, error);
+       // window.location.reload();
+    }
+  });
 }
 
 // Move the target square to a random position
@@ -292,3 +326,8 @@ canvas.focus();
 
 
 </script>
+
+
+<?php
+require(__DIR__ . "/../../partials/flash.php");
+?>
