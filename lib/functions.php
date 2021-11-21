@@ -145,10 +145,14 @@ function save_score($score, $user_id, $showFlash = false)
     $stmt = $db->prepare("INSERT INTO Scores (score, user_id) VALUES (:score, :uid)");
     try {
         $stmt->execute([":score" => $score, ":uid" => $user_id]);
+        
         if ($showFlash) {
             flash("Saved score of $score", "success");
         }
+        
     } catch (PDOException $e) {
         flash("Error saving score: " . var_export($e->errorInfo, true), "danger");
     }
 }
+
+?>

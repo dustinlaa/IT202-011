@@ -180,11 +180,11 @@ function endGame() {
     }),
     success: (resp, status, xhr) => {
         console.log(resp, status, xhr);
-        //window.location.reload(); //lazily reloading the page to get a new nonce for next game
+        window.location.reload(); //lazily reloading the page to get a new nonce for next game
     },
     error: (xhr, status, error) => {
         console.log(xhr, status, error);
-       // window.location.reload();
+        window.location.reload();
     }
   });
 }
