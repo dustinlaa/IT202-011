@@ -149,23 +149,10 @@ function endGame() {
   context.font = '24px Arial';
   context.textAlign = 'center';
   context.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 2);
+  let data = {
+    score : score,
+  }
 
-  $.ajax({
-    type: "POST",
-    url: "api/save_score.php",
-    contentType: "application/json",
-    data: JSON.stringify({
-        data: data
-    }),
-    success: (resp, status, xhr) => {
-        console.log(resp, status, xhr);
-        window.location.reload(); //lazily reloading the page to get a new nonce for next game
-    },
-    error: (xhr, status, error) => {
-        console.log(xhr, status, error);
-        window.location.reload();
-    }
-    });
 }
 
 // Move the target square to a random position
