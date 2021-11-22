@@ -225,15 +225,17 @@
           - Screenshot #4 Description:
             - Score of zero not being saved of a user logged in after playing a game.
 
-- [ ] \(mm/dd/yyyy of completion) The user will be able to see their last 10 scores
+- [x] \(11/21/2021 of completion) The user will be able to see their last 10 scores
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/78
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/142800171-9eca52e1-1605-40de-993b-0831a99184af.png)
+          - Screenshot #1 Description:
+            - User's profile page shows their 10 most recent scores.
 
 - [ ] \(mm/dd/yyyy of completion) Create functions that output the following scoreboards (this will be used later)
   -  List of Evidence of Feature Completion
