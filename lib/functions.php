@@ -184,7 +184,7 @@ function get_latest_scores($user_id, $limit = 10)
 function get_top_10($duration = "week")
 {
     $d = "week";
-    if (in_array($duration, ["day", "week", "month", "lifetime"])) {
+    if (in_array($duration, ["week", "month", "lifetime"])) {
         //variable is safe
         $d = $duration;
     }
