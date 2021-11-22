@@ -180,7 +180,7 @@ function get_latest_scores($user_id, $limit = 10)
     return [];
 }
 
-/** Gets the top 10 scores for valid durations (day, week, month, lifetime) */
+/** Gets the top 10 scores for valid durations (week, month, lifetime) */
 function get_top_10($duration = "week")
 {
     $d = "week";
