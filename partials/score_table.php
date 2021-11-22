@@ -5,6 +5,15 @@ if (!isset($duration)) {
     $duration = "week"; //choosing to default to week
 }
 
+if ($duration == "Weekly") {
+    $duration = "week";
+}
+if ($duration == "Monthly") {
+    $duration = "month";
+}
+if ($duration == "Lifetime") {
+    $duration = "lifetime";
+}
 $results = get_top_10($duration);
 
 switch ($duration) {

@@ -5,9 +5,9 @@ require(__DIR__ . "/../../partials/nav.php");
 
 <div class="container-fluid">
     <form method="POST" action="home.php">
-        <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="weekly()" value="week" />
-        <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="monthly()"value="month" />
-        <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="lifetime()"value="lifetime" />
+        <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="weekly()" value="Weekly" />
+        <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="monthly()"value="Monthly" />
+        <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="lifetime()"value="Lifetime" />
     </form>
 </div>
 
