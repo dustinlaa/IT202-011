@@ -2,8 +2,9 @@
 //requires functions.php
 //requires a duration to be set
 if (!isset($duration)) {
-    $duration = "week"; //choosing to default to day
+    $duration = "week"; //choosing to default to week
 }
+
 $results = get_top_10($duration);
 
 switch ($duration) {
