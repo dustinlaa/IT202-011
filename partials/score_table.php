@@ -7,10 +7,6 @@ if (!isset($duration)) {
 $results = get_top_10($duration);
 
 switch ($duration) {
-    case "day":
-        $title = "Daily";
-        $time = "daily";
-        break;
     case "week":
         $title = "Top 10 Weekly";
         $time = "weekly";
@@ -28,7 +24,7 @@ switch ($duration) {
         break;
 }
 ?>
-<div class="card bg-transparent">
+<div class="card mb-4 border-0 bg-transparent">
     <div class="card-body">
         <div class="card-title">
             <div class="fw-bold fs-3">
@@ -45,7 +41,7 @@ switch ($duration) {
                 <tbody>
                     <?php if (!$results || count($results) == 0) : ?>
                         <tr>
-                            <td colspan="100%"> No scores to display</td>
+                            <td colspan="100%"> No <?php se($time); ?> scores to display</td>
                         </tr>
                     <?php else : ?>
                         <?php foreach ($results as $result) : ?>
