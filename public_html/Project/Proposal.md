@@ -210,15 +210,29 @@
           - Screenshot #1 Description:
             - Implementation of the game with its own page.
 
-- [ ] \(mm/dd/yyyy of completion) The system will save the user’s score at the end of the game if the user is logged in
+- [x] \(11/21/2021 of completion) The system will save the user’s score at the end of the game if the user is logged in
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/game.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/73
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 
+        - ![image](https://user-images.githubusercontent.com/71194959/142796875-bc3711b1-74b0-45d3-9b42-7b608102237a.png)
+          - Screenshot #1 Description:
+            - Scores table showing new entry every time a score is received.
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/142797018-e6c9c989-d874-4044-9b25-11de1b4dcc72.png)
+          - Screenshot #2 Description:
+            - Error message shown when a user is not logged in after playing a game.
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/142797414-bba33170-8620-4693-b6db-a7c03ab1564e.png)
+          - Screenshot #3 Description:
+            - Score being saved of a user logged in after playing a game.
+      - Screenshot #4
+        - ![image](https://user-images.githubusercontent.com/71194959/142797506-97e6be29-d0f3-4c62-8ea6-1b8786d88ea1.png)
+          - Screenshot #4 Description:
+            - Score of zero not being saved of a user logged in after playing a game.
 
 - [ ] \(mm/dd/yyyy of completion) The user will be able to see their last 10 scores
   -  List of Evidence of Feature Completion
