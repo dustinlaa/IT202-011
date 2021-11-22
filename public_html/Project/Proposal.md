@@ -200,6 +200,10 @@
     - Direct Link: https://drl3-prod.herokuapp.com/Project/game.php
     - Pull Requests
       - https://github.com/dustinlaa/IT202-011/pull/68
+    - What game will I be doing?
+      - The game I have chosen is the Collect the Square Game.
+    - Briefly describe it.
+      - My implementation of the game is having the player square collect multiple mini squares to gain points within 30 seconds while avoiding an enemy square.  
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/142342834-8d86ed25-4cbc-4363-96e6-ea92bb0cce8c.png)

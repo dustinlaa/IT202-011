@@ -13,4 +13,11 @@ function flash(message = "", color = "info") {
     outerDiv.appendChild(innerDiv);
     //add the element to the DOM (if we don't it merely exists in memory)
     flash.appendChild(outerDiv);
+    //added to clear out messages after a delay for ajax calls
+    //otherwise messages will continue to pile on and block/push content
+    setTimeout(() => {
+        console.log("removing");
+        flash.children[0].remove();
+        
+    }, 3000);
 }
