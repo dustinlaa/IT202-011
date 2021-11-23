@@ -185,45 +185,88 @@
 
 - Milestone 2
 
-- [ ] \(mm/dd/yyyy of completion) Pick a simple game to implement, anything that generates a score that’s more advanced than a simple random number generator (may build off of a sample from the site shared in class)
+- [x] \(11/17/2021 of completion) Pick a simple game to implement, anything that generates a score that’s more advanced than a simple random number generator (may build off of a sample from the site shared in class)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/game.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/68
+    - What game will I be doing?
+      - The game I have chosen is the Collect the Square Game.
+    - Briefly describe it.
+      - My implementation of the game is having the player square collect multiple mini squares to gain points within 30 seconds while avoiding an enemy square.  
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/142342834-8d86ed25-4cbc-4363-96e6-ea92bb0cce8c.png)
+          - Screenshot #1 Description:
+            - Implementation of the game with its own page.
 
-- [ ] \(mm/dd/yyyy of completion) The system will save the user’s score at the end of the game if the user is logged in
+- [x] \(11/21/2021 of completion) The system will save the user’s score at the end of the game if the user is logged in
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/game.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/73
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 
+        - ![image](https://user-images.githubusercontent.com/71194959/142796875-bc3711b1-74b0-45d3-9b42-7b608102237a.png)
+          - Screenshot #1 Description:
+            - Scores table showing new entry every time a score is received.
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/142797018-e6c9c989-d874-4044-9b25-11de1b4dcc72.png)
+          - Screenshot #2 Description:
+            - Error message shown when a user is not logged in after playing a game.
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/142797414-bba33170-8620-4693-b6db-a7c03ab1564e.png)
+          - Screenshot #3 Description:
+            - Score being saved of a user logged in after playing a game.
+      - Screenshot #4
+        - ![image](https://user-images.githubusercontent.com/71194959/142797506-97e6be29-d0f3-4c62-8ea6-1b8786d88ea1.png)
+          - Screenshot #4 Description:
+            - Score of zero not being saved of a user logged in after playing a game.
 
-- [ ] \(mm/dd/yyyy of completion) The user will be able to see their last 10 scores
+- [x] \(11/21/2021 of completion) The user will be able to see their last 10 scores
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/78
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/142800171-9eca52e1-1605-40de-993b-0831a99184af.png)
+          - Screenshot #1 Description:
+            - User's profile page shows their 10 most recent scores.
 
-- [ ] \(mm/dd/yyyy of completion) Create functions that output the following scoreboards (this will be used later)
+- [x] \(11/22/2021 of completion) Create functions that output the following scoreboards (this will be used later)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/home.php
+      - https://github.com/dustinlaa/IT202-011/blob/dev/partials/score_table.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/83
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/142956278-0e617db7-0e2a-4f6d-b708-a5c88de87d6a.png)
+          - Screenshot #1 Description:
+            - Functions used to show top 10 weekly, monthly, and lifetime scores.
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/142956407-38e8f3f1-e454-4434-b720-33bf607edab1.png)
+          - Screenshot #2 Description:
+            - If there are no scores are displayed, a proper message is displayed instead.
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/142956940-0a0e2054-7739-409a-9479-342c35668ebc.png)
+          - Screenshot #3 Description:
+            - Weekly Scoreboard with at most 10 results.
+
+      - Screenshot #4
+        - ![image](https://user-images.githubusercontent.com/71194959/142956991-9312194c-bce9-4be2-aa4d-e8b35ad9ba01.png)
+          - Screenshot #4 Description:
+            - Monthly Scoreboard with at most 10 results. (Rows 4 and 5 are scores from earlier in the month)
+
+      - Screenshot #5
+        - ![image](https://user-images.githubusercontent.com/71194959/142957129-2652e3d0-4405-49e6-91bc-b4d178e4b646.png)
+          - Screenshot #5 Description:
+            - Lifetime Scoreboard with at most 10 results. (Rows 1 and 3 are from a different month and are put on the lifetime scoreboard)
 
 - Milestone 3
 
