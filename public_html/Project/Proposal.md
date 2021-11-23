@@ -257,12 +257,10 @@
         - ![image](https://user-images.githubusercontent.com/71194959/142956940-0a0e2054-7739-409a-9479-342c35668ebc.png)
           - Screenshot #3 Description:
             - Weekly Scoreboard with at most 10 results.
-
       - Screenshot #4
         - ![image](https://user-images.githubusercontent.com/71194959/142956991-9312194c-bce9-4be2-aa4d-e8b35ad9ba01.png)
           - Screenshot #4 Description:
             - Monthly Scoreboard with at most 10 results. (Rows 4 and 5 are scores from earlier in the month)
-
       - Screenshot #5
         - ![image](https://user-images.githubusercontent.com/71194959/142957129-2652e3d0-4405-49e6-91bc-b4d178e4b646.png)
           - Screenshot #5 Description:
@@ -270,16 +268,23 @@
 
 - Milestone 3
 
-- [ ] \(mm/dd/yyyy of completion) Users will have points associated with their account.
+- [x] \(11/23/2021 of completion) Users will have points associated with their account.
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
+      - https://github.com/dustinlaa/IT202-011/blob/prod/public_html/Project/sql/007_alter_table_users.sql
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/89
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/143077912-c8864a8b-071a-4a25-97fc-b03ea716c6de.png)
+          - Screenshot #1 Description:
+            - User Table including points with a default of 0.
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/143078130-0b5c7398-dca0-4f2a-9430-60259925b50a.png)
+          - Screenshot #2 Description:
+            - Points are displayed on the profile of a user.
+  
 - [ ] \(mm/dd/yyyy of completion) Create a PointsHistory table (id, user_id, point_change, reason, created)
   -  List of Evidence of Feature Completion
     - Status: Pending (Completed, Partially working, Incomplete, Pending)
