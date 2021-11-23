@@ -252,7 +252,7 @@
       - Screenshot #2
         - ![image](https://user-images.githubusercontent.com/71194959/142956407-38e8f3f1-e454-4434-b720-33bf607edab1.png)
           - Screenshot #2 Description:
-            - If there are no scores are displayed, a proper message is displayed instead.
+            - If there are no scores to be displayed, a proper message is displayed instead.
       - Screenshot #3
         - ![image](https://user-images.githubusercontent.com/71194959/142956940-0a0e2054-7739-409a-9479-342c35668ebc.png)
           - Screenshot #3 Description:
