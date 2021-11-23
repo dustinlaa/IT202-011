@@ -237,15 +237,36 @@
           - Screenshot #1 Description:
             - User's profile page shows their 10 most recent scores.
 
-- [ ] \(mm/dd/yyyy of completion) Create functions that output the following scoreboards (this will be used later)
+- [x] \(11/22/2021 of completion) Create functions that output the following scoreboards (this will be used later)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/home.php
+      - https://github.com/dustinlaa/IT202-011/blob/dev/partials/score_table.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/83
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/142956278-0e617db7-0e2a-4f6d-b708-a5c88de87d6a.png)
+          - Screenshot #1 Description:
+            - Functions used to show top 10 weekly, monthly, and lifetime scores.
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/142956407-38e8f3f1-e454-4434-b720-33bf607edab1.png)
+          - Screenshot #2 Description:
+            - If there are no scores are displayed, a proper message is displayed instead.
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/142956940-0a0e2054-7739-409a-9479-342c35668ebc.png)
+          - Screenshot #3 Description:
+            - Weekly Scoreboard with at most 10 results.
+
+      - Screenshot #4
+        - ![image](https://user-images.githubusercontent.com/71194959/142956991-9312194c-bce9-4be2-aa4d-e8b35ad9ba01.png)
+          - Screenshot #4 Description:
+            - Monthly Scoreboard with at most 10 results. (Rows 4 and 5 are scores from earlier in the month)
+
+      - Screenshot #5
+        - ![image](https://user-images.githubusercontent.com/71194959/142957129-2652e3d0-4405-49e6-91bc-b4d178e4b646.png)
+          - Screenshot #5 Description:
+            - Lifetime Scoreboard with at most 10 results. (Rows 1 and 3 are from a different month and are put on the lifetime scoreboard)
 
 - Milestone 3
 - Milestone 4
