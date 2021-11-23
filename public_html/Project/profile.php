@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
+require_once(__DIR__ . "/show_scores.php");
 is_logged_in(true);
 ?>
 <?php
