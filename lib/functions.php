@@ -218,4 +218,19 @@ function get_account_points()
     }
     return 0;
 }
+
+function points_update()
+{
+    if (is_logged_in()) {
+        $query = "UPDATE Users set points = (SELECT IFNULL(SUM(point_change), 0) from PointsHistory WHERE user_id = :uid) where user_id = :uid";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":uid" => get_user_id()]);
+           // get_or_create_account(); //refresh session data
+        } catch (PDOException $e) {
+            flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
+}
 ?>
