@@ -56,6 +56,7 @@ function has_role($role)
     }
     return false;
 }
+
 function get_username()
 {
     if (is_logged_in()) { //we need to check for login first because "user" key may not exist
@@ -211,18 +212,25 @@ function get_top_10($duration = "week")
     return $results;
 }
 
+
 function get_account_points()
 {
-    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
-        return (int)se($_SESSION["user"]["account"], "Points", 0, false);
+    if (is_logged_in() && isset($_SESSION["user"]["points"])) {
+        return (int)se($_SESSION["user"]["points"], "points", 0, false);
     }
     return 0;
 }
 
+
+
+
+
+
+/*
 function points_update()
 {
     if (is_logged_in()) {
-        $query = "UPDATE Users set points = (SELECT IFNULL(SUM(point_change), 0) from PointsHistory WHERE user_id = :uid) where user_id = :uid";
+        $query = "UPDATE Users set Points = (SELECT IFNULL(SUM(point_change), 0) from PointsHistory WHERE user_id = :uid) where user_id = :uid";
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
@@ -233,4 +241,5 @@ function points_update()
         }
     }
 }
+*/
 ?>
