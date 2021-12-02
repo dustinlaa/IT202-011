@@ -59,6 +59,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     }
     if (!$hasError) {
         //TODO 4
+        points_update();
         $db = getDB();
         $stmt = $db->prepare("SELECT id, email, username, password, points from Users where email = :email OR username = :email");
         try {

@@ -222,15 +222,10 @@ function get_account_points()
 }
 
 
-
-
-
-
-/*
 function points_update()
 {
     if (is_logged_in()) {
-        $query = "UPDATE Users set Points = (SELECT IFNULL(SUM(point_change), 0) from PointsHistory WHERE user_id = :uid) where user_id = :uid";
+        $query = "UPDATE Users SET points = (SELECT IFNULL(SUM(point_change), 0) from PointsHistory WHERE user_id = :uid) where user_id = :uid";
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
@@ -241,5 +236,4 @@ function points_update()
         }
     }
 }
-*/
 ?>
