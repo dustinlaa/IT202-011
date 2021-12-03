@@ -312,15 +312,21 @@
             - get_user() used to update the $_SESSION variable with the new point value from PointsHistory
   
 
-- [ ] \(mm/dd/yyyy of completion) Competitions table should have the following columns (id, name, created, duration, expires (now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created, modified)
+- [x] \(12/03/2021 of completion) Competitions table should have the following columns (id, name, created, duration, expires (now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created, modified)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://github.com/dustinlaa/IT202-011/blob/prod/public_html/Project/sql/009_create_table_competitions.sql
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/99
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 
+        - ![image](https://user-images.githubusercontent.com/71194959/144645827-b880155c-ba77-4774-9293-618a821c6f02.png)
+          - Screenshot #1 Description:
+            - Competitions Table
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/144646008-5c634ed1-8264-4ae5-930a-f5161132707b.png)
+          - Screenshot #2 Description:
+            - Competitions Table Code
 
 - [ ] \(mm/dd/yyyy of completion) User will be able to create a competition
   -  List of Evidence of Feature Completion
