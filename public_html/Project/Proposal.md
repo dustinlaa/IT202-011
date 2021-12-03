@@ -297,15 +297,17 @@
       - [PR link #1 (repeat as necessary)](https://github.com/dustinlaa/IT202-011/pull/96)
     - Screenshots
       - Screenshot #1
-        - https://user-images.githubusercontent.com/71194959/144545358-9cc37948-ed8f-41f3-ad30-ab7ee7b048e1.png
+        - ![image](https://user-images.githubusercontent.com/71194959/144554700-9c6ec808-cc6b-4f62-9f3a-833bd9be8ef9.png)
+
           - Screenshot #1 Description:
             - PointsHistory Table
       - Screenshot #2
-        - https://user-images.githubusercontent.com/71194959/144545622-cde7d9e5-e9b4-47fc-b005-38c75fa765ac.png
+        - ![image](https://user-images.githubusercontent.com/71194959/144554778-f824f589-69df-46fe-bc13-b4c9b4d72663.png)
+
           - Screenshot #2 Description:
             - points_update() function used for adding the points of a user in PointsHistory
       - Screenshot #3
-        - https://user-images.githubusercontent.com/71194959/144552329-5e546e8b-9a6e-4350-b076-479ba3cedb3f.png
+        - ![image](https://user-images.githubusercontent.com/71194959/144552329-5e546e8b-9a6e-4350-b076-479ba3cedb3f.png)
           - Screenshot #3 Description:
             - get_user() used to update the $_SESSION variable with the new point value from PointsHistory
   
