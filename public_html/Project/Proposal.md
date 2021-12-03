@@ -294,7 +294,7 @@
     - Status: Completed
     - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
     - Pull Requests
-      - [PR link #1 (repeat as necessary)](https://github.com/dustinlaa/IT202-011/pull/96)
+      - PR link #1 (repeat as necessary)(https://github.com/dustinlaa/IT202-011/pull/96)
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/144554700-9c6ec808-cc6b-4f62-9f3a-833bd9be8ef9.png)
