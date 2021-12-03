@@ -267,16 +267,49 @@
             - Lifetime Scoreboard with at most 10 results. (Rows 1 and 3 are from a different month and are put on the lifetime scoreboard)
 
 - Milestone 3
-<table><tr><td>Milestone 3</td></tr><tr><td><table><tr><td>F1 - Users will have points associated with their account. (2021-11-23)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
 
- [https://drl3-prod.herokuapp.com/Project/profile.php](https://drl3-prod.herokuapp.com/Project/profile.php)</p></td></tr><tr><td>PRs:<p>
+- [x] \(11/23/2021 of completion) Users will have points associated with their account.
+  -  List of Evidence of Feature Completion
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
+      - https://github.com/dustinlaa/IT202-011/blob/prod/public_html/Project/sql/007_alter_table_users.sql
+    - Pull Requests
+      - https://github.com/dustinlaa/IT202-011/pull/89
+    - Screenshots
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/143077912-c8864a8b-071a-4a25-97fc-b03ea716c6de.png)
+          - Screenshot #1 Description:
+            - User Table including points with a default of 0.
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/143078130-0b5c7398-dca0-4f2a-9430-60259925b50a.png)
+          - Screenshot #2 Description:
+            - Points are displayed on the profile of a user.
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/144553658-d724dba5-45c9-4359-895e-9df9144b6d85.png)
+          - Screenshot #3 Description:
+            - Function get_account_points() used to return points of the user.
+  
+- [x] \(12/03/2021 of completion) Create a PointsHistory table (id, user_id, point_change, reason, created)
+  -  List of Evidence of Feature Completion
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/profile.php
+    - Pull Requests
+      - [PR link #1 (repeat as necessary)](https://github.com/dustinlaa/IT202-011/pull/96)
+    - Screenshots
+      - Screenshot #1
+        - https://user-images.githubusercontent.com/71194959/144545358-9cc37948-ed8f-41f3-ad30-ab7ee7b048e1.png
+          - Screenshot #1 Description:
+            - PointsHistory Table
+      - Screenshot #2
+        - https://user-images.githubusercontent.com/71194959/144545622-cde7d9e5-e9b4-47fc-b005-38c75fa765ac.png
+          - Screenshot #2 Description:
+            - points_update() function used for adding the points of a user in PointsHistory
+      - Screenshot #3
+        - https://user-images.githubusercontent.com/71194959/144552329-5e546e8b-9a6e-4350-b076-479ba3cedb3f.png
+          - Screenshot #3 Description:
+            - get_user() used to update the $_SESSION variable with the new point value from PointsHistory
+  
 
- [https://github.com/dustinlaa/IT202-011/pull/89](https://github.com/dustinlaa/IT202-011/pull/89)</p></td></tr><tr><td><table><tr><td>F1 - Alter the User table to include points with a default of 0.<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/143077912-c8864a8b-071a-4a25-97fc-b03ea716c6de.png"><p>User Table including points with a default of 0.</td></tr></td></tr></table></td></tr><tr><td><table><tr><td>F1 - Points should show on their profile page<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/143078130-0b5c7398-dca0-4f2a-9430-60259925b50a.png"><p>Points are displayed on the profile of a user.</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/144553658-d724dba5-45c9-4359-895e-9df9144b6d85.png"><p>function get_account_points() used to return points of the user.</td></tr></td></tr></table></td></tr><table><tr><td>F2 - Create a PointsHistory table (id, user_id, point_change, reason, created) (2021-12-03)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
-
- [https://drl3-prod.herokuapp.com/Project/profile.php](https://drl3-prod.herokuapp.com/Project/profile.php)</p></td></tr><tr><td>PRs:<p>
-
- [https://github.com/dustinlaa/IT202-011/pull/96](https://github.com/dustinlaa/IT202-011/pull/96)</p></td></tr><tr><td><table><tr><td>F2 - Any new entry should update the user’s points value (do not update the User points column directly)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/144545358-9cc37948-ed8f-41f3-ad30-ab7ee7b048e1.png"><p>PointsHistory Table</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/144545622-cde7d9e5-e9b4-47fc-b005-38c75fa765ac.png"><p>points_update() function used for adding the points of a user in PointsHistory</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/144552329-5e546e8b-9a6e-4350-b076-479ba3cedb3f.png"><p>get_user() used to update the $_SESSION variable with the new point value from PointsHistory</td></tr></td></tr></table></td></tr></td></tr></table>
- 
 - [ ] \(mm/dd/yyyy of completion) Competitions table should have the following columns (id, name, created, duration, expires (now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created, modified)
   -  List of Evidence of Feature Completion
     - Status: Pending (Completed, Partially working, Incomplete, Pending)
