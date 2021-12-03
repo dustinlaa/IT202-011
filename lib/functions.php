@@ -56,6 +56,7 @@ function has_role($role)
     }
     return false;
 }
+
 function get_username()
 {
     if (is_logged_in()) { //we need to check for login first because "user" key may not exist
@@ -211,11 +212,52 @@ function get_top_10($duration = "week")
     return $results;
 }
 
+
 function get_account_points()
 {
-    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
-        return (int)se($_SESSION["user"]["account"], "Points", 0, false);
+    if (is_logged_in() && isset($_SESSION["user"]["points"])) {
+        return (int)se($_SESSION["user"]["points"], "points", 0, false);
     }
     return 0;
 }
+
+
+function points_update()
+{
+    if (is_logged_in()) {
+        $query = "UPDATE Users SET points = (SELECT IFNULL(SUM(point_change), 0) from PointsHistory WHERE user_id = :uid) where id = :uid";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":uid" => get_user_id()]);
+        } catch (PDOException $e) {
+            flash("Error refreshing account: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
+}
+
+function get_user()
+{
+    if (is_logged_in()) {
+        $user = ["id" => -1, "points" => 0];
+        //this should always be 0 or 1, but being safe
+        $query = "SELECT id, points from Users where id = :uid LIMIT 1";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute([":uid" => get_user_id()]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user = $result;
+            $user["id"] = $result["id"]; //don't need to save id again
+            $user["points"] = $result["points"];
+            //$created = true;
+        } catch (PDOException $e) {
+            flash("Technical error: " . var_export($e->errorInfo, true), "danger");
+        }
+        $_SESSION["user"]["points"] = $user; //storing the user info as a key under the user session
+    } else {
+        flash("You're not logged in", "danger");
+    }
+}
+
 ?>

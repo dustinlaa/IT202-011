@@ -59,8 +59,9 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
     }
     if (!$hasError) {
         //TODO 4
+        
         $db = getDB();
-        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email OR username = :email");
+        $stmt = $db->prepare("SELECT id, email, username, password, points from Users where email = :email OR username = :email");
         try {
             $r = $stmt->execute([":email" => $email]);
             if ($r) {
@@ -83,6 +84,8 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                         } else {
                             $_SESSION["user"]["roles"] = []; //no roles
                         }
+                        points_update();
+                        get_user();
                         die(header("Location: home.php"));
                     } else {
                         flash("Invalid password", "danger");
