@@ -1,1 +1,0 @@
-UPDATE Users SET points = (SELECT IFNULL(SUM(point_change), 0) from PointsHistory WHERE user_id = 79) where id = 79
