@@ -1,2 +1,2 @@
-ALTER TABLE Users ADD COLUMN Points int 
+ALTER TABLE Users ADD COLUMN points int NOT NULL
 default 0
