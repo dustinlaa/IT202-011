@@ -285,15 +285,13 @@
           - Screenshot #2 Description:
             - Points are displayed on the profile of a user.
   
-- [ ] \(mm/dd/yyyy of completion) Create a PointsHistory table (id, user_id, point_change, reason, created)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<table><tr><td>Milestone 3</td></tr><tr><td><table><tr><td>F1 - Create a PointsHistory table (id, user_id, point_change, reason, created) (undefined)</td></tr><tr><td>Status: complete</td></tr><tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/profile.php](https://drl3-prod.herokuapp.com/Project/profile.php)</p></td></tr><tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/96](https://github.com/dustinlaa/IT202-011/pull/96)</p></td></tr><tr><td><table><tr><td>F1 - Create a PointsHistory table (id, user_id, point_change, reason, created)<tr><td>Status: completed</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/144545358-9cc37948-ed8f-41f3-ad30-ab7ee7b048e1.png"><p>PointsHistory Table</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/144545622-cde7d9e5-e9b4-47fc-b005-38c75fa765ac.png"><p>points_update() function used for adding the points of a user in PointsHistory
+</td></tr><tr><td><img width="100%" src="https://user-images.githubusercontent.com/71194959/144552329-5e546e8b-9a6e-4350-b076-479ba3cedb3f.png"><p>get_user() used to update the $_SESSION variable with the new point value from PointsHistory
+</td></tr></td></tr></table></td></tr></td></tr></table>
 
 - [ ] \(mm/dd/yyyy of completion) Competitions table should have the following columns (id, name, created, duration, expires (now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created, modified)
   -  List of Evidence of Feature Completion
