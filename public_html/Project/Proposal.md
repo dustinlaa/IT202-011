@@ -321,19 +321,19 @@
             - get_user() used to update the $_SESSION variable with the new point value from PointsHistory
   
 
-- [x] \(12/03/2021 of completion) Competitions table should have the following columns (id, name, created, duration, expires (now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created, modified)
+- [x] \(12/04/2021 of completion) Competitions table should have the following columns (id, name, created, duration, expires (now + duration), current_reward, starting_reward, join_fee, current_participants, min_participants, paid_out (boolean), min_score, first_place_per, second_place_per, third_place_per, cost_to_create, created, modified)
   -  List of Evidence of Feature Completion
     - Status: Completed
     - Direct Link: https://github.com/dustinlaa/IT202-011/blob/prod/public_html/Project/sql/009_create_table_competitions.sql
     - Pull Requests
-      - https://github.com/dustinlaa/IT202-011/pull/99
+      - https://github.com/dustinlaa/IT202-011/pull/104
     - Screenshots
       - Screenshot #1 
-        - ![image](https://user-images.githubusercontent.com/71194959/144645827-b880155c-ba77-4774-9293-618a821c6f02.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/144725333-e4fc5c48-0e79-473c-a0bb-c935aea499d1.png)
           - Screenshot #1 Description:
             - Competitions Table
       - Screenshot #2
-        - ![image](https://user-images.githubusercontent.com/71194959/144646008-5c634ed1-8264-4ae5-930a-f5161132707b.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/144725349-d9c04d41-3f20-4bca-99b5-16af0af1aeb2.png)
           - Screenshot #2 Description:
             - Competitions Table Code
 
