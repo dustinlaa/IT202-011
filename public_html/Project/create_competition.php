@@ -64,19 +64,10 @@ if (!is_logged_in()) {
         flash("All competitions require at least 3 participants to payout", "warning");
     }
     
-
-    /*
     if ($join_fee < 0) {
         flash("Entry fee must be free (0) or greater", "warning");
         $isValid = false;
     }
-    */
-    /*
-    if ($reward_increase < 0.0 || $reward_increase > 1.0) {
-        flash("The reward increase can only be between 0% - 100% of the Entry Fee", "warning");
-        $isValid = false;
-    }
-    */
 
     if ($duration < 3 || is_nan($duration)) {
         flash("Competitions must be 3 or greater days", "warning");
@@ -88,8 +79,6 @@ if (!is_logged_in()) {
         $db = getDB();
         //setting 1 for participants since we'll be adding creator to the comp, this saves an update query
         //using sql to calculate the expires date by passing in a sanitized/validated $duration
-        //setting starting_reward and current_reward to the same value
-        //$query = "INSERT INTO Competitions (name, creator, starting_reward, current_reward, min_participants, current_participants, entry_fee, reward_increase, payouts, expires)
         $query = "INSERT INTO Competitions (name, duration, expires, current_reward, starting_reward, join_fee, current_participants, min_participants, min_score, first_place_per, second_place_per, third_place_per, cost_to_create)
             values (:n, :d, DATE_ADD(NOW(), INTERVAL $duration day), :cr, :sr, :jf, 1, :mp, :ms, :fpp, :spp, :tpp, :ctc)";
         
@@ -111,8 +100,6 @@ if (!is_logged_in()) {
             $id = (int)$db->lastInsertId();
             if ($id > 0) {
                 change_points(-$cost_to_create, "Created Competition #$id", $forceAllowZero = true);
-                //TODO creator joins competition for free
-                //error_log("Attempt to join created competition: " . join_competition($comp_id, true));
                 flash("Successfully created Competition $name", "success");
             }
         } catch (PDOException $e) {
