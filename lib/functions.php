@@ -260,4 +260,23 @@ function get_user()
     }
 }
 
+function change_points($points, $reason, $forceAllowZero = false) {
+
+    if ($points > 0 || $forceAllowZero) {
+        $query = "INSERT INTO PointsHistory (user_id, point_change, reason) 
+            VALUES (:uid, :pc, :r)";
+        $params[":uid"] = get_user_id();
+        $params[":pc"] = $points;
+        $params[":r"] = $reason;
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $stmt->execute($params);
+            points_update();
+            get_user();
+        } catch (PDOException $e) {
+            flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
+        }
+    }
+}
 ?>
