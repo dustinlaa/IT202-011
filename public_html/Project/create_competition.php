@@ -80,14 +80,13 @@ if (!is_logged_in()) {
         //setting 1 for participants since we'll be adding creator to the comp, this saves an update query
         //using sql to calculate the expires date by passing in a sanitized/validated $duration
         $query = "INSERT INTO Competitions (name, duration, expires, current_reward, starting_reward, join_fee, current_participants, min_participants, min_score, first_place_per, second_place_per, third_place_per, cost_to_create)
-            values (:n, :d, DATE_ADD(NOW(), INTERVAL $duration day), :cr, :sr, :jf, 1, :mp, :ms, :fpp, :spp, :tpp, :ctc)";
+            values (:n, :d, DATE_ADD(NOW(), INTERVAL $duration day), :sr, :sr, :jf, 1, :mp, :ms, :fpp, :spp, :tpp, :ctc)";
         
         $stmt = $db->prepare($query);
         try {
             $stmt->execute([
                 ":n" => $name,
                 ":d" => $duration,
-                ":cr" => $current_reward,
                 ":sr" => $starting_reward,
                 ":jf" => $join_fee,
                 ":mp" => $min_participants,
