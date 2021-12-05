@@ -339,7 +339,7 @@ function join_competition($comp_id, $isCreator = false) {
             }
             $query = "UPDATE Competitions set 
             current_participants = (SELECT count(1) from UserCompetitions WHERE comp_id = :cid),
-            current_reward = $reward_increase
+            current_reward = current_reward + $reward_increase
             WHERE id = :cid";
             $stmt = $db->prepare($query);
             try {
