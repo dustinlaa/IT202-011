@@ -68,6 +68,7 @@ try {
                 <div class="col">Reward</div>
                 <div class="col">Participants</div>
                 <div class="col">Ends</div>
+                <div class="col">Join Fee</div>
                 <div class="col">Actions</div>
             </div>
         </div>
@@ -85,6 +86,7 @@ try {
                         <div class="col"><?php se($result, "current_reward"); ?></div>
                         <div class="col"><?php se($result, "current_participants"); ?>/<?php se($result, "min_participants"); ?></div>
                         <div class="col"><?php se($result, "expires"); ?></div>
+                        <div class="col"><?php se($result, "join_fee"); ?></div>
                         <div class="col">
                             <a class="btn btn-primary" href="competition.php?id=<?php se($result, "id"); ?>">Details</a>
                             <?php if ((int)se($result, "joined", 0, false) > 0) : ?>
