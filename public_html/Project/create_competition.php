@@ -99,6 +99,7 @@ if (!is_logged_in()) {
             $id = (int)$db->lastInsertId();
             if ($id > 0) {
                 change_points(-$cost_to_create, "Created Competition #$id", $forceAllowZero = true);
+                error_log("Attempt to join created competition: " . join_competition($id, true));
                 flash("Successfully created Competition $name", "success");
             }
         } catch (PDOException $e) {
@@ -120,8 +121,8 @@ if (!is_logged_in()) {
             <input class="form-control" type="number" name="starting_reward" id="sr" min="1" value="1" oninput="document.getElementById('cost').innerText = 1 + (value*1)" required />
         </div>
         <div>
-            <label class="form-label" for="ef">Entry Fee</label>
-            <input class="form-control" type="number" name="entry_fee" id="ef" min="0" value="0" required />
+            <label class="form-label" for="ef">Join Fee</label>
+            <input class="form-control" type="number" name="join_fee" id="ef" min="0" value="0" required />
         </div>
         <div>
             <label class="form-label" for="rp">Min. Required Participants</label>
