@@ -12,6 +12,8 @@ $title = "Active Competitions";
 //In the real world, you'd want to profile the difference between doing a subselect or a LEFT/RIGHT join
 // on Competitions and UserCompetitions to see which is more performant
 // the subselect I'm doing here is just checking if the logged in user is associated to this competition (i.e., they registered/joined)
+
+// Will implement below in milestone 4
 /*
 $filter = se($_GET, "filter", "active", false);
 if($filter === "joined"){
@@ -88,7 +90,7 @@ try {
                         <div class="col"><?php se($result, "expires"); ?></div>
                         <div class="col"><?php se($result, "join_fee"); ?></div>
                         <div class="col">
-                            <a class="btn btn-primary" href="competition.php?id=<?php se($result, "id"); ?>">Details</a>
+                            <!--<a class="btn btn-primary" href="competition.php?id=<?php se($result, "id"); ?>">Details</a> will implement later-->
                             <?php if ((int)se($result, "joined", 0, false) > 0) : ?>
                                 <button class="btn btn-secondary" disabled><em>Joined</em></button>
                             <?php elseif (se($result, "expires","expired", false) !== "expired") : ?>

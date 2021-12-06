@@ -300,7 +300,6 @@ function join_competition($comp_id, $isCreator = false) {
     }
     if ($comp && count($comp) > 0) {
         $paid_out = (int)se($comp, "paid_out", 0, false) > 0;
-        //$is_expired = (int)se($comp, "is_expired", 0, false) > 0;
         if ($paid_out) {
             return "You can't join a completed competition";
         }

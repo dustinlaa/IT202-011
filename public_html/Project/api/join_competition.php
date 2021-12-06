@@ -1,13 +1,4 @@
 <?php
-//these files in the API folder aren't expected to be fully user facing.
-//A user shouldn't access these directly.
-//we'll be using ajax to send/receive data here
-/*
-require(__DIR__ . "/api_helpers.php"); //specific helpers just for API
-if (!isAjax()) {
-    die(header("Location: index.php"));
-}
-*/
 $response = ["message" => "An error occurred", "status" => 400]; //defined a response template with initially failure data
 
 session_start(); //since we're not pulling in nav.php we do need to explicitly ask for the session
