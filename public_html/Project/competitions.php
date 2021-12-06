@@ -12,6 +12,7 @@ $title = "Active Competitions";
 //In the real world, you'd want to profile the difference between doing a subselect or a LEFT/RIGHT join
 // on Competitions and UserCompetitions to see which is more performant
 // the subselect I'm doing here is just checking if the logged in user is associated to this competition (i.e., they registered/joined)
+/*
 $filter = se($_GET, "filter", "active", false);
 if($filter === "joined"){
     $query =
@@ -27,12 +28,20 @@ WHERE paid_out = 1 ORDER BY expires asc limit 10";
     $title = "Expired Competitions";
 }
 else{
+    
 $query =
         "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
 (select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
 WHERE paid_out = 0 ORDER BY expires asc limit 10";
     $title = "Active Competitions";
 }
+*/
+$query =
+        "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
+(select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
+WHERE paid_out = 0 ORDER BY expires asc limit 10";
+    $title = "Active Competitions";
+
 $stmt = $db->prepare($query);
 try {
     //TODO add other filters for when there are a ton of competitions (i.e., filter by name or other attributes)
@@ -92,7 +101,7 @@ try {
         function joinCompetition(comp_id, ele) {
             if (!!window.jQuery === true) {
                 $.post("api/join_competition.php", {
-                    competition_id: comp_id
+                    comp_id: comp_id
                 }, (data) => {
                     let json = JSON.parse(data);
                     flash(json.message);
@@ -107,7 +116,7 @@ try {
                         "Content-type": "application/x-www-form-urlencoded",
                         "X-Requested-With": "XMLHttpRequest",
                     },
-                    body: "competition_id=" + comp_id
+                    body: "comp_id=" + comp_id
                 }).then(async res => {
                     console.log(res);
                     let data = await res.json();

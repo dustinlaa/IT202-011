@@ -285,7 +285,7 @@ function join_competition($comp_id, $isCreator = false) {
         return "Invalid Competition";
     }
     $db = getDB();
-    $query = "SELECT current_reward, join_fee, paid_out, FROM Competitions where id = :id";
+    $query = "SELECT name, current_reward, join_fee, paid_out FROM Competitions where id = :id";
     $stmt = $db->prepare($query);
     $comp = [];
     try {
@@ -304,18 +304,13 @@ function join_competition($comp_id, $isCreator = false) {
         if ($paid_out) {
             return "You can't join a completed competition";
         }
-        /*
-        if ($is_expired) {
-            return "You can't join an expired competition";
-        }
-        */
         $points = (int)se(get_account_points(), null, 0, false);
         $join_fee = (int)se($comp, "join_fee", 0, false);
-        $current_reward = (int)se($comp, "current_reward", 0, false);
+        $name = se($comp, "name", 0, false);
         if ($join_fee > $points) {
             return "You can't afford to join this competition";
         }
-        $query = "INSERT INTO UserCompetitions (comp_id, user_id) VALUES (:cidm :uid)";
+        $query = "INSERT INTO CompetitionParticipants (comp_id, user_id) VALUES (:cid, :uid)";
         $stmt = $db->prepare($query);
         $joined = false;
         try {
@@ -329,16 +324,13 @@ function join_competition($comp_id, $isCreator = false) {
             error_log("Error joining competition (UserCompetitions): " . var_export($err, true));
         }
         if ($joined) {
-            //+1 for the current_reward calculation may be needed as current_participants at that point
-            // may not see the latest changed value from the current_participants calculation in the same query
-            // so using a +1 since really that's all it should be doing and this should yield an accurate reward value
             if ($join_fee == 0){
                 $reward_increase = 1;
             } else {
                 $reward_increase = ceil(0.5 * $join_fee);
             }
             $query = "UPDATE Competitions set 
-            current_participants = (SELECT count(1) from UserCompetitions WHERE comp_id = :cid),
+            current_participants = (SELECT count(1) from CompetitionParticipants WHERE comp_id = :cid),
             current_reward = current_reward + $reward_increase
             WHERE id = :cid";
             $stmt = $db->prepare($query);
@@ -348,12 +340,11 @@ function join_competition($comp_id, $isCreator = false) {
                 error_log("Error updating competition stats: " . var_export($e->errorInfo, true));
                 //I'm choosing not to let failure here be a big deal, only 1 successful update periodically is required
             }
-            //this won't record free competitions due to the inner logic of change_points()
             if ($isCreator) {
-                $fee = 0;
+                $join_fee = 0;
             }
-            change_points($fee, "join-comp", get_user_id(), -1, "Joined Competition #" . $comp_id, true);
-            return "Successfully joined Competition #$comp_id";
+            change_points(-$join_fee, "Joined Competition " . $comp_id, -1, true);
+            return "Successfully joined Competition \"$name\"";
         } else {
             return "Unknown error joining competition, please try again";
         }
