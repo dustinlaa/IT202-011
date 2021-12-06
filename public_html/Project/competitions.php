@@ -55,6 +55,7 @@ try {
 }
 ?>
 
+
 <div class="container-fluid">
     <div class="fw-bold fs-3">
         <?php se($title); ?>
@@ -128,6 +129,16 @@ try {
         }
     </script>
 </div>
+
 <?php
 require_once(__DIR__ . "/../../partials/flash.php");
 ?>
+
+
+<style>
+    .list-group-item {
+        background: #212529;
+        border: solid white;
+        color: white;
+    }
+</style>
