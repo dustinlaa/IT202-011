@@ -9,13 +9,14 @@ if (!is_logged_in()) {
 $results = [];
 $db = getDB();
 $title = "Active Competitions";
+$filter = se($_GET, "filter", "active", false);
 //In the real world, you'd want to profile the difference between doing a subselect or a LEFT/RIGHT join
 // on Competitions and UserCompetitions to see which is more performant
 // the subselect I'm doing here is just checking if the logged in user is associated to this competition (i.e., they registered/joined)
 
 // Will implement below in milestone 4
 /*
-$filter = se($_GET, "filter", "active", false);
+
 if($filter === "joined"){
     $query =
         "SELECT c.id,name, current_reward, min_participants, current_participants, join_fee, if(expires <= current_timestamp(),'expired', expires) as expires, 1 as joined FROM Competitions c 
