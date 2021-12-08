@@ -1,168 +1,105 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
-if (!is_logged_in()) {
-    flash("You must be logged in to access this page", "danger");
+is_logged_in(true);
+$db = getDB();
+/*
+$payout_options = [];
 
-    die(header("Location: " . $BASE_PATH));
-
+$stmt = $db->prepare("SELECT id, CONCAT(first_place,'% - ', second_place, '% - ', third_place, '%') as place FROM BGD_Payout_Options");
+try {
+    $stmt->execute();
+    $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($r) {
+        $payout_options = $r;
+    }
+} catch (PDOException $e) {
+    flash("There was a problem fetching first, second, third place options", "danger");
+    error_log("Error Getting Places: " . var_export($e, true));
 }
-
-?>
-<?php if (isset($_POST["name"])) {
-    $id = se($_POST, "id", false, false);
-    $name = se($_POST, "name", false, false);
-    $duration = (int)se($_POST, "duration", 3, false);
-    $expires = se($_POST, "expires", 1, false);
-    $current_reward = (int)se($_POST, "current_reward", 1, false);
-    $starting_reward = (int)se($_POST, "starting_reward", 1, false);
-    $join_fee = (int)se($_POST, "join_fee", 0, false);
-    $current_participants = (int)se($_POST, "current_participants", 0, false);
-    $min_participants = (int)se($_POST, "min_participants", 3, false);
-    $paid_out = false;
-    $min_score = (int)se($_POST, "min_score", 1, false);
-    $first_place_per = "1";  // by default, first place will get 100% of reward
-    $second_place_per = "0";
-    $third_place_per = "0";
-    $payout_split = se($_POST, "payout", 1, false);
-    $cost_to_create = $starting_reward + 1;
-    $points = (int)se(get_account_points(), null, 0, false);
-   
-    if ($payout_split == 2){
-        $first_place_per = "0.8";
-        $second_place_per = "0.2";
-        $third_place_per = "0";
-    } else if ($payout_split == 3){
-        $first_place_per = "0.7";
-        $second_place_per = "0.2";
-        $third_place_per = "0.1";
-    } else if ($payout_split == 4){
-        $first_place_per = "0.6";
-        $second_place_per = "0.3";
-        $third_place_per = "0.1";
-    } 
-
-
-    $isValid = true;
-    //validate
-    if (!!$name === false) {
-        flash("Name must be set", "warning");
-        $isValid = false;
-    }
-    if ($starting_reward < 0) {
-        flash("Invalid Starting Reward", "warning");
-        $isValid = false;
-    }
-    if ($cost_to_create < 1) {
-        flash("Invalid Cost", "danger");
-        $isValid = false;
-    }
-    if ($cost_to_create > $points) {
-        flash("You can't afford this, it requires $cost_to_create points", "warning");
-        $isValid = false;
-    }
-    if ($min_participants < 3) {
-        flash("All competitions require at least 3 participants to payout", "warning");
-    }
-    
-    if ($join_fee < 0) {
-        flash("Entry fee must be free (0) or greater", "warning");
-        $isValid = false;
-    }
-
-    if ($duration < 3 || is_nan($duration)) {
-        flash("Competitions must be 3 or greater days", "warning");
-        $isValid = false;
-    }  
-
-    if ($isValid) {
-        //create competition and deduct cost
-        $db = getDB();
-        //setting 1 for participants since we'll be adding creator to the comp, this saves an update query
-        //using sql to calculate the expires date by passing in a sanitized/validated $duration
-        $query = "INSERT INTO Competitions (name, duration, expires, current_reward, starting_reward, join_fee, current_participants, min_participants, min_score, first_place_per, second_place_per, third_place_per, cost_to_create)
-            values (:n, :d, DATE_ADD(NOW(), INTERVAL $duration day), :sr, :sr, :jf, 1, :mp, :ms, :fpp, :spp, :tpp, :ctc)";
-        
-        $stmt = $db->prepare($query);
-        try {
-            $stmt->execute([
-                ":n" => $name,
-                ":d" => $duration,
-                ":sr" => $starting_reward,
-                ":jf" => $join_fee,
-                ":mp" => $min_participants,
-                ":ms" => $min_score,
-                ":fpp" => $first_place_per,
-                ":spp" => $second_place_per,
-                ":tpp" => $third_place_per,
-                ":ctc" => $cost_to_create,
-            ]);
-            $id = (int)$db->lastInsertId();
-            if ($id > 0) {
-                change_points(-$cost_to_create, "Created Competition #$id", $forceAllowZero = true);
-                error_log("Attempt to join created competition: " . join_competition($id, true));
-                flash("Successfully created Competition $name", "success");
+*/
+//save
+if (isset($_POST["title"]) && !empty($_POST["title"])) {
+    $cost = (int)se($_POST, "starting_reward", 0, false);
+    $cost++;
+    $cost += (int)se($_POST, "join_fee", 0, false);
+    $title = se($_POST, "title", "N/A", false);
+    $points = get_account_points();
+    if ($points >= $cost) {
+        $db->beginTransaction();
+        if (change_points($cost, "create_comp", get_user_id(), -1, "Create Competition $title")) {
+            $_POST["creator_id"] = get_user_id();
+            $comp_id = save_data("Competitions", $_POST);
+            if ($comp_id > 0) {
+                if (add_to_competition($comp_id, get_user_id())) {
+                    flash("Successfully created competition", "success");
+                    $db->commit();
+                } else {
+                    $db->rollback();
+                }
+            } else {
+                $db->rollback();
             }
-        } catch (PDOException $e) {
-            error_log("Error creating competition: " . var_export($e->errorInfo, true));
-            flash("There was an error creating the competition: " . var_export($e->errorInfo[2]), "danger");
+        } else {
+            flash("There was a problem deducting points", "warning");
+            $db->rollback();
         }
+    } else {
+        flash("You can't afford this right now", "warning");
     }
 }
 ?>
-<h1> Create Competition </h1>
+
 <div class="container-fluid">
-    <form method="POST" autocomplete="off">
-        <div>
-            <label class="form-label" for="name">Name/Title</label>
-            <input class="form-control" type="text" name="name" id="name" required />
+    <h1>Create Competition</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input id="title" name="title" class="form-control" />
         </div>
-        <div>
-            <label class="form-label" for="sr">Starting Reward</label>
-            <input class="form-control" type="number" name="starting_reward" id="sr" min="1" value="1" oninput="document.getElementById('cost').innerText = 1 + (value*1)" required />
+        <div class="mb-3">
+            <label for="reward" class="form-label">Starting Reward</label>
+            <input id="reward" type="number" name="starting_reward" class="form-control" onchange="updateCost()" placeholder=">= 1" min="1" />
         </div>
-        <div>
-            <label class="form-label" for="ef">Join Fee</label>
-            <input class="form-control" type="number" name="join_fee" id="ef" min="0" value="0" required />
+        <div class="mb-3">
+            <label for="ms" class="form-label">Min. Score</label>
+            <input id="ms" name="min_score" type="number" class="form-control" placeholder=">= 1" min="1" />
         </div>
-        <div>
-            <label class="form-label" for="rp">Min. Required Participants</label>
-            <input class="form-control" type="number" name="min_participants" id="rp" min="3" value="3" required />
+        <div class="mb-3">
+            <label for="mp" class="form-label">Min. Participants</label>
+            <input id="mp" name="min_participants" type="number" class="form-control" placeholder=">= 3" min="3" />
         </div>
-        <div>
-            <label class="form-label" for="d">Duration in Days</label>
-            <input class="form-control" type="number" name="duration" id="d" min="3" value="3" required />
+        <div class="mb-3">
+            <label for="jc" class="form-label">Join Cost</label>
+            <input id="jc" name="join_cost" type="number" class="form-control" onchange="updateCost()" placeholder=">= 0" min="0" />
         </div>
-        <div>
-            <label class="form-label" for="payout">Payout Split</label>
-            <select class="form-control" name="payout" required>
-                <option value="1">100% to First</option>
-                <option value="2">80% to First, 20% to Second</option>
-                <option value="3">70% to First, 20% to Second, 10% to Third</option>
-                <option value="4">60% to First, 30% to Second, 10% to Third</option>
+        <div class="mb-3">
+            <label for="duration" class="form-label">Duration (in Days)</label>
+            <input id="duration" name="duration" type="number" class="form-control" placeholder=">= 3" min="3" />
+        </div>
+        <div class="mb-3">
+            <label for="po" class="form-label">Payout Option</label>
+            <select id="po" name="payout_option" class="form-control">
+                <?php foreach ($payout_options as $po) : ?>
+                    <option value="<?php se($po, 'id'); ?>"><?php se($po, 'place'); ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
-        <div>Cost: <span id="cost">2</span></div>
-        <input class="btn btn-dark" type="submit" value="Create" />
+        <div class="mb-3">
+            <input type="submit" value="Create Competition (Cost: 2)" class="btn btn-primary" />
+        </div>
     </form>
+    <script>
+        function updateCost() {
+            let starting = parseInt(document.getElementById("reward").value || 0) + 1;
+            let join = parseInt(document.getElementById("jc").value || 0);
+            if (join < 0) {
+                join = 1;
+            }
+            let cost = starting + join;
+            document.querySelector("[type=submit]").value = `Create Competition (Cost: ${cost})`;
+        }
+    </script>
 </div>
-<script>
-    function validate(form) {
-        //TODO add all validations (basically match what you define at the html level for consistency)
-
-        //client side balance validation (just used to reduce server load as we don't trust the client)
-        let balance = <?php se(get_account_points(), null, 0); ?> * 1; //convert to int
-        let cost = 1 + (form.starting_reward.value * 1);
-        if (cost < 1) {
-            cost = 1;
-        }
-        let isValid = true;
-        if (cost > balance) {
-            flash("You can't afford to create this competition, you need " + cost + " points");
-            isValid = false;
-        }
-        return isValid;
-    }
-</script>
 <?php
-require_once(__DIR__ . "/../../partials/flash.php");
+require(__DIR__ . "/../../partials/footer.php");
 ?>
