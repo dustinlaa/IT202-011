@@ -65,13 +65,11 @@ if (!is_logged_in()) {
         flash("All competitions require at least 3 participants to payout", "warning");
     }
     
-
-    /*
     if ($join_fee < 0) {
         flash("Entry fee must be free (0) or greater", "warning");
         $isValid = false;
     }
-    */
+    
     /*
     if ($reward_increase < 0.0 || $reward_increase > 1.0) {
         flash("The reward increase can only be between 0% - 100% of the Entry Fee", "warning");
