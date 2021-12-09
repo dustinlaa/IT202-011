@@ -90,7 +90,7 @@ try {
                         <div class="col"><?php se($result, "expires"); ?></div>
                         <div class="col"><?php se($result, "join_fee"); ?></div>
                         <div class="col">
-                            <!--<a class="btn btn-primary" href="competition.php?id=<?php se($result, "id"); ?>">Details</a> will implement later-->
+                            <a class="btn btn-primary" href="view_competition.php?id=<?php se($result, "id"); ?>">Details</a>
                             <?php if ((int)se($result, "joined", 0, false) > 0) : ?>
                                 <button class="btn btn-secondary" disabled><em>Joined</em></button>
                             <?php elseif (se($result, "expires","expired", false) !== "expired") : ?>
