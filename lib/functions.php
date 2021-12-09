@@ -320,7 +320,7 @@ function join_competition($comp_id, $isCreator = false) {
             if ($err[1] === 1062) {
                 return "You already joined this competition";
             }
-            error_log("Error joining competition (UserCompetitions): " . var_export($err, true));
+            error_log("Error joining competition (CompetitionParticipants): " . var_export($err, true));
         }
         if ($joined) {
             if ($join_fee == 0){

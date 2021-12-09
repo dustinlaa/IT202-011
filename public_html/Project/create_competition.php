@@ -7,38 +7,39 @@ if (!is_logged_in()) {
 
 }
 
+
 ?>
 <?php if (isset($_POST["name"])) {
     $id = se($_POST, "id", false, false);
     $name = se($_POST, "name", false, false);
     $duration = (int)se($_POST, "duration", 3, false);
     $expires = se($_POST, "expires", 1, false);
-    $current_reward = (int)se($_POST, "current_reward", 1, false);
     $starting_reward = (int)se($_POST, "starting_reward", 1, false);
+    $current_reward = $starting_reward;
     $join_fee = (int)se($_POST, "join_fee", 0, false);
     $current_participants = (int)se($_POST, "current_participants", 0, false);
     $min_participants = (int)se($_POST, "min_participants", 3, false);
     $paid_out = false;
     $min_score = (int)se($_POST, "min_score", 1, false);
-    $first_place_per = "1";  // by default, first place will get 100% of reward
-    $second_place_per = "0";
-    $third_place_per = "0";
+    $first_place_per = 100;  // by default, first place will get 100% of reward
+    $second_place_per = 0;
+    $third_place_per = 0;
     $payout_split = se($_POST, "payout", 1, false);
     $cost_to_create = $starting_reward + 1;
     $points = (int)se(get_account_points(), null, 0, false);
    
     if ($payout_split == 2){
-        $first_place_per = "0.8";
-        $second_place_per = "0.2";
-        $third_place_per = "0";
+        $first_place_per = 80;
+        $second_place_per = 20;
+        $third_place_per = 0;
     } else if ($payout_split == 3){
-        $first_place_per = "0.7";
-        $second_place_per = "0.2";
-        $third_place_per = "0.1";
+        $first_place_per = 70;
+        $second_place_per = 20;
+        $third_place_per = 10;
     } else if ($payout_split == 4){
-        $first_place_per = "0.6";
-        $second_place_per = "0.3";
-        $third_place_per = "0.1";
+        $first_place_per = 60;
+        $second_place_per = 30;
+        $third_place_per = 10;
     } 
 
 
@@ -64,10 +65,19 @@ if (!is_logged_in()) {
         flash("All competitions require at least 3 participants to payout", "warning");
     }
     
+
+    /*
     if ($join_fee < 0) {
         flash("Entry fee must be free (0) or greater", "warning");
         $isValid = false;
     }
+    */
+    /*
+    if ($reward_increase < 0.0 || $reward_increase > 1.0) {
+        flash("The reward increase can only be between 0% - 100% of the Entry Fee", "warning");
+        $isValid = false;
+    }
+    */
 
     if ($duration < 3 || is_nan($duration)) {
         flash("Competitions must be 3 or greater days", "warning");
@@ -79,14 +89,17 @@ if (!is_logged_in()) {
         $db = getDB();
         //setting 1 for participants since we'll be adding creator to the comp, this saves an update query
         //using sql to calculate the expires date by passing in a sanitized/validated $duration
+        //setting starting_reward and current_reward to the same value
+        //$query = "INSERT INTO Competitions (name, creator, starting_reward, current_reward, min_participants, current_participants, entry_fee, reward_increase, payouts, expires)
         $query = "INSERT INTO Competitions (name, duration, expires, current_reward, starting_reward, join_fee, current_participants, min_participants, min_score, first_place_per, second_place_per, third_place_per, cost_to_create)
-            values (:n, :d, DATE_ADD(NOW(), INTERVAL $duration day), :sr, :sr, :jf, 1, :mp, :ms, :fpp, :spp, :tpp, :ctc)";
+            values (:n, :d, DATE_ADD(NOW(), INTERVAL $duration day), :cr, :sr, :jf, 1, :mp, :ms, :fpp, :spp, :tpp, :ctc)";
         
         $stmt = $db->prepare($query);
         try {
             $stmt->execute([
                 ":n" => $name,
                 ":d" => $duration,
+                ":cr" => $current_reward,
                 ":sr" => $starting_reward,
                 ":jf" => $join_fee,
                 ":mp" => $min_participants,
@@ -99,6 +112,7 @@ if (!is_logged_in()) {
             $id = (int)$db->lastInsertId();
             if ($id > 0) {
                 change_points(-$cost_to_create, "Created Competition #$id", $forceAllowZero = true);
+                //TODO creator joins competition for free
                 error_log("Attempt to join created competition: " . join_competition($id, true));
                 flash("Successfully created Competition $name", "success");
             }
@@ -121,7 +135,7 @@ if (!is_logged_in()) {
             <input class="form-control" type="number" name="starting_reward" id="sr" min="1" value="1" oninput="document.getElementById('cost').innerText = 1 + (value*1)" required />
         </div>
         <div>
-            <label class="form-label" for="ef">Join Fee</label>
+            <label class="form-label" for="ef">Entry Fee</label>
             <input class="form-control" type="number" name="join_fee" id="ef" min="0" value="0" required />
         </div>
         <div>
