@@ -26,8 +26,8 @@ if (isset($_POST["title"]) && !empty($_POST["title"])) {
     $points = get_account_points();
     if ($points >= $cost) {
         $db->beginTransaction();
-        if (change_points($cost, "create_comp", get_user_id(), -1, "Create Competition $title")) {
-            $_POST["creator_id"] = get_user_id();
+        if (change_points($cost, "Create Competition $title")) {
+            $_POST["uid"] = get_user_id();
             $comp_id = save_data("Competitions", $_POST);
             if ($comp_id > 0) {
                 if (add_to_competition($comp_id, get_user_id())) {
@@ -76,9 +76,9 @@ if (isset($_POST["title"]) && !empty($_POST["title"])) {
             <label for="duration" class="form-label">Duration (in Days)</label>
             <input id="duration" name="duration" type="number" class="form-control" placeholder=">= 3" min="3" />
         </div>
-        <div class="mb-3">
-            <label for="po" class="form-label">Payout Option</label>
-            <select id="po" name="payout_option" class="form-control">
+        <div>
+            <label class="form-label" for="payout">Payout Split</label>
+            <select class="form-control" name="payout" required>
                 <option value="1">100% to First</option>
                 <option value="2">80% to First, 20% to Second</option>
                 <option value="3">70% to First, 20% to Second, 10% to Third</option>
