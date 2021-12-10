@@ -260,12 +260,12 @@ function get_user()
     }
 }
 
-function change_points($points, $reason, $forceAllowZero = false) {
+function change_points($points, $reason, $id, $forceAllowZero = false) {
 
     if ($points > 0 || $forceAllowZero) {
         $query = "INSERT INTO PointsHistory (user_id, point_change, reason) 
             VALUES (:uid, :pc, :r)";
-        $params[":uid"] = get_user_id();
+        $params[":uid"] = $id;
         $params[":pc"] = $points;
         $params[":r"] = $reason;
         $db = getDB();
@@ -444,17 +444,17 @@ function calc_winners()
                             $score = se($row, "score", 0, false);
                             $user_id = se($row, "user_id", -1, false);
                             if ($index == 0) {
-                                if (change_points($fpr, "First place in $name with score of $score")) {
+                                if (change_points($fpr, "First place in $name with score of $score", $user_id)) {
                                     $atleastOne = true;
                                 }
                                 elog("User $user_id First place in $name with score of $score");
                             } else if ($index == 1) {
-                                if (change_points($spr, "Second place in $name with score of $score")) {
+                                if (change_points($spr, "Second place in $name with score of $score", $user_id)) {
                                     $atleastOne = true;
                                 }
                                 elog("User $user_id Second place in $name with score of $score");
                             } else if ($index == 2) {
-                                if (change_points($tpr, "Third place in $name with score of $score")) {
+                                if (change_points($tpr, "Third place in $name with score of $score", $user_id)) {
                                     $atleastOne = true;
                                 }
                                 elog("User $user_id Third place in $name with score of $score");

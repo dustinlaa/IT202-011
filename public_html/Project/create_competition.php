@@ -110,7 +110,7 @@ if (!is_logged_in()) {
             ]);
             $id = (int)$db->lastInsertId();
             if ($id > 0) {
-                change_points(-$cost_to_create, "Created Competition #$id", $forceAllowZero = true);
+                change_points(-$cost_to_create, "Created Competition #$id", get_user_id(), $forceAllowZero = true);
                 //TODO creator joins competition for free
                 error_log("Attempt to join created competition: " . join_competition($id, true));
                 flash("Successfully created Competition $name", "success");
