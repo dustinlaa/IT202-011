@@ -310,6 +310,9 @@ function join_competition($comp_id, $isCreator = false) {
         $points = (int)se(get_account_points(), null, 0, false);
         $join_fee = (int)se($comp, "join_fee", 0, false);
         $name = se($comp, "name", 0, false);
+        if ($isCreator) {
+            $join_fee = 0;
+        }
         if ($join_fee >= $points) {
             flash("You can't afford to join this competition", "danger");
             return;
@@ -344,9 +347,6 @@ function join_competition($comp_id, $isCreator = false) {
             } catch (PDOException $e) {
                 error_log("Error updating competition stats: " . var_export($e->errorInfo, true));
                 //I'm choosing not to let failure here be a big deal, only 1 successful update periodically is required
-            }
-            if ($isCreator) {
-                $join_fee = 0;
             }
             change_points(-$join_fee, "Joined Competition " . $comp_id, -1, true);
             flash("Successfully joined Competition \"$name\"");
