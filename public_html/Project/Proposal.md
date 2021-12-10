@@ -334,65 +334,92 @@
     - Direct Link: https://drl3-prod.herokuapp.com/Project/create_competition.php
     - Pull Requests
       - https://github.com/dustinlaa/IT202-011/pull/142
+      - https://github.com/dustinlaa/IT202-011/pull/147
     - Screenshots
       - Screenshot #1
         -![image](https://user-images.githubusercontent.com/71194959/145647074-a87f5464-8eeb-462c-9907-0549c410fe76.png)
           - Screenshot #1 Description:
             - Create Competition Page
       - Screenshot #2
-        -
+        - ![image](https://user-images.githubusercontent.com/71194959/145648468-dc1847b0-386e-48a9-8c9e-dd961bcb504c.png)
           - Screenshot #2 Description:
-            - Successful Creation of a Competition
+            - Successful creation of a competition
+      - Screenshot #3
+        - ![image](https://user-images.githubusercontent.com/71194959/145648581-2ad2bbbb-59be-4892-85a7-5a8b20575665.png)
+          - Screenshot #3 Description:
+            - User cannot afford to create competition
 
-- [ ] \(mm/dd/yyyy of completion) Each new participant causes the Reward value to increase by at least 1 or 50% of the joining fee rounded up
+- [x] \(12/10/2021 of completion) Each new participant causes the Reward value to increase by at least 1 or 50% of the joining fee rounded up
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://github.com/dustinlaa/IT202-011/blob/prod/lib/functions.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/143
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/145648837-6a02d9d7-ecca-400d-afae-2468fb796a9a.png)
+          - Screenshot #1 Description:
+            - Joining a competition increases the reward.
 
-- [ ] \(mm/dd/yyyy of completion) Have a page where the User can see active competitions (not expired)
+- [x] \(12/10/2021 of completion) Have a page where the User can see active competitions (not expired)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/list_competition.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/143
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 
+        - ![image](https://user-images.githubusercontent.com/71194959/145648966-0a2f8f6f-5f13-4b54-8193-e281345e1267.png)
+          - Screenshot #1 Description:
+            - Active Competitions Page
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/145650322-0e4c41cf-4c81-4a7b-9275-f7ae1fa5ffcf.png)
+          - Screenshot #2 Description:
+            - List of competitions ordered by competitions expiring first (Only shows 10)
 
-- [ ] \(mm/dd/yyyy of completion) Will need an association table CompetitionParticipants (id, comp_id, user_id, created)
+- [x] \(12/10/2021 of completion) Will need an association table CompetitionParticipants (id, comp_id, user_id, created)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://github.com/dustinlaa/IT202-011/blob/prod/public_html/Project/sql/010_create_table_competitionparticipants.sql
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/141
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/145649418-3d022362-6979-4413-87cc-3950e031c615.png)
+            - Screenshot #1 Description:
+              - CompetitionParticipants Table
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/145649469-28e06039-f3f4-48bf-97c6-fde27fdbc5ea.png)
+            - Screenshot #2 Description:
+              - CompetitionParticipantsTable
+  
+- [x] \(12/10/2021 of completion) User can join active competitions 
+  -  List of Evidence of Feature Completion
+    - Status: Completed
+    - Direct Link: https://drl3-prod.herokuapp.com/Project/list_competition.php
+    - Pull Requests
+      - https://github.com/dustinlaa/IT202-011/pull/143
+    - Screenshots
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/145649863-57d9e8c1-46e9-489b-a21a-72f10d0f6287.png)
+            - Screenshot #1 Description:
+              - User can join competitions
+      - Screenshot #2
+        - ![image](https://user-images.githubusercontent.com/71194959/145650049-75e57b1a-7a28-4ba8-920e-e211872657ce.png)
+            - Screenshot #2 Description:
+              - User can't join competition they can't afford
 
-- [ ] \(mm/dd/yyyy of completion) User can join active competitions 
+- [x] \(12/10/2021 of completion) Create function that calculates competition winners
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: https://github.com/dustinlaa/IT202-011/blob/prod/public_html/Project/admin/admin_calc.php
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - https://github.com/dustinlaa/IT202-011/pull/144
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-
-- [ ] \(mm/dd/yyyy of completion) Create function that calculates competition winners
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1
+        - ![image](https://user-images.githubusercontent.com/71194959/145651778-ddbb5edd-fb33-4e2a-805e-9f9bd363be16.png)
+        - Screenshot #1 Description:
+          - Successful Winners Calculation
   
 - Milestone 4
 
