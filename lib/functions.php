@@ -281,6 +281,7 @@ function change_points($points, $reason, $id, $forceAllowZero = false) {
     }
 }
 
+
 function join_competition($comp_id, $isCreator = false) {
     if ($comp_id <= 0) {
         flash("Invalid Competition", "warning");
@@ -348,7 +349,7 @@ function join_competition($comp_id, $isCreator = false) {
                 error_log("Error updating competition stats: " . var_export($e->errorInfo, true));
                 //I'm choosing not to let failure here be a big deal, only 1 successful update periodically is required
             }
-            change_points(-$join_fee, "Joined Competition " . $comp_id, -1, true);
+            change_points(-$join_fee, "Joined Competition " . $comp_id, get_user_id(), true);
             flash("Successfully joined Competition \"$name\"");
             return;
         } else {
