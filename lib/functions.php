@@ -360,4 +360,50 @@ function join_competition($comp_id, $isCreator = false) {
         return;
     }
 }
+
+function redirect($path)
+{ //header headache
+    //https://www.php.net/manual/en/function.headers-sent.php#90160
+    /*headers are sent at the end of script execution otherwise they are sent when the buffer reaches it's limit and emptied */
+    if (!headers_sent()) {
+        //php redirect
+        die(header("Location: " . get_url($path)));
+    }
+    //javascript redirect
+    echo "<script>window.location.href='" . get_url($path) . "';</script>";
+    //metadata redirect (runs if javascript is disabled)
+    echo "<noscript><meta http-equiv=\"refresh\" content=\"0;url=" . get_url($path) . "\"/></noscript>";
+    die();
+}
+
+function get_top_scores_for_comp($comp_id, $limit = 10)
+{
+    $db = getDB();
+
+    //Below if a user can't win more than one place
+    
+    $stmt = $db->prepare("SELECT * FROM (SELECT s.user_id, s.score, s.created, u.username as username, DENSE_RANK() OVER 
+    (PARTITION BY s.user_id ORDER BY s.score desc) as 'rank' FROM Scores s
+    JOIN CompetitionParticipants cp on cp.user_id = s.user_id
+    JOIN Competitions c on cp.comp_id = c.id
+    JOIN Users u on u.id = s.user_id
+    WHERE c.id = :cid AND s.created BETWEEN cp.created AND c.expires AND s.score >= c.min_score
+    )as t where `rank` = 1 ORDER BY score desc LIMIT :limit");
+
+    $scores = [];
+    try {
+        $stmt->bindValue(":cid", $comp_id, PDO::PARAM_INT);
+        $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($r) {
+            $scores = $r;
+        }
+    } catch (PDOException $e) {
+        flash("There was a problem fetching scores, please try again later", "danger");
+        error_log("List competition scores error: " . var_export($e, true));
+    }
+    return $scores;
+}
+
 ?>
