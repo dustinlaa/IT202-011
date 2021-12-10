@@ -260,12 +260,12 @@ function get_user()
     }
 }
 
-function change_points($points, $reason, $forceAllowZero = false) {
+function change_points($points, $reason, $id, $forceAllowZero = false) {
 
     if ($points > 0 || $forceAllowZero) {
         $query = "INSERT INTO PointsHistory (user_id, point_change, reason) 
             VALUES (:uid, :pc, :r)";
-        $params[":uid"] = get_user_id();
+        $params[":uid"] = $id;
         $params[":pc"] = $points;
         $params[":r"] = $reason;
         $db = getDB();
@@ -310,6 +310,9 @@ function join_competition($comp_id, $isCreator = false) {
         $points = (int)se(get_account_points(), null, 0, false);
         $join_fee = (int)se($comp, "join_fee", 0, false);
         $name = se($comp, "name", 0, false);
+        if ($isCreator) {
+            $join_fee = 0;
+        }
         if ($join_fee >= $points) {
             flash("You can't afford to join this competition", "danger");
             return;
@@ -344,9 +347,6 @@ function join_competition($comp_id, $isCreator = false) {
             } catch (PDOException $e) {
                 error_log("Error updating competition stats: " . var_export($e->errorInfo, true));
                 //I'm choosing not to let failure here be a big deal, only 1 successful update periodically is required
-            }
-            if ($isCreator) {
-                $join_fee = 0;
             }
             change_points(-$join_fee, "Joined Competition " . $comp_id, -1, true);
             flash("Successfully joined Competition \"$name\"");
@@ -404,6 +404,105 @@ function get_top_scores_for_comp($comp_id, $limit = 10)
         error_log("List competition scores error: " . var_export($e, true));
     }
     return $scores;
+}
+
+function elog($data)
+{
+    echo "<br>" . var_export($data, true) . "<br>";
+    error_log(var_export($data, true));
+}
+
+function calc_winners()
+{
+    $db = getDB();
+    elog("Starting winner calc");
+    $calced_comps = [];
+    $stmt = $db->prepare("SELECT id, name, current_reward, first_place_per, second_place_per, third_place_per FROM Competitions WHERE expires <= CURRENT_TIMESTAMP() and paid_out = 0 AND current_participants >= min_participants LIMIT 10");
+    try {
+        $stmt->execute();
+        $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($r) {
+            $rc = $stmt->rowCount();
+            elog("Validating $rc comps");
+            foreach ($r as $row) {
+                $fp = floatval(se($row, "first_place_per", 0, false) / 100);
+                $sp = floatval(se($row, "second_place_per", 0, false) / 100);
+                $tp = floatval(se($row, "third_place_per", 0, false) / 100);
+                $reward = (int)se($row, "current_reward", 0, false);
+                $name = se($row, "name", "-", false);
+                $fpr = ceil($reward * $fp);
+                $spr = ceil($reward * $sp);
+                $tpr = ceil($reward * $tp);
+                $comp_id = se($row, "id", -1, false);
+                
+                try {
+                    $r = get_top_scores_for_comp($comp_id, 3);
+                    echo '<pre>'; print_r($r); echo '</pre>';
+                    if ($r) {
+                        $atleastOne = false;
+                        foreach ($r as $index => $row) {
+                            $score = se($row, "score", 0, false);
+                            $user_id = se($row, "user_id", -1, false);
+                            if ($index == 0) {
+                                if (change_points($fpr, "First place in $name with score of $score", $user_id)) {
+                                    $atleastOne = true;
+                                }
+                                elog("User $user_id First place in $name with score of $score");
+                            } else if ($index == 1) {
+                                if (change_points($spr, "Second place in $name with score of $score", $user_id)) {
+                                    $atleastOne = true;
+                                }
+                                elog("User $user_id Second place in $name with score of $score");
+                            } else if ($index == 2) {
+                                if (change_points($tpr, "Third place in $name with score of $score", $user_id)) {
+                                    $atleastOne = true;
+                                }
+                                elog("User $user_id Third place in $name with score of $score");
+                            }
+                        }
+                        if ($atleastOne) {
+                            array_push($calced_comps, $comp_id);
+                        }
+                    } else {
+                        elog("No eligible scores");
+                    }
+                } catch (PDOException $e) {
+                    error_log("Getting winners error: " . var_export($e, true));
+                }
+            }
+        } else {
+            elog("No competitions ready");
+        }
+    } catch (PDOException $e) {
+        error_log("Getting Expired Comps error: " . var_export($e, true));
+    }
+    //closing calced comps
+    if (count($calced_comps) > 0) {
+        foreach ($calced_comps as $compId) {
+            $query = "UPDATE Competitions set paid_out = 1 WHERE id = " . $compId;
+            elog("Close query: $query");
+            $stmt = $db->prepare($query);
+            try {
+                $stmt->execute();
+                $updated = $stmt->rowCount();
+                elog("Marked $updated comps complete and calced");
+            } catch (PDOException $e) {
+                error_log("Closing valid comps error: " . var_export($e, true));
+            }
+        }
+    } else {
+        elog("No competitions to calc");
+    }
+    //close invalid comps
+    $stmt = $db->prepare("UPDATE Competitions set paid_out = 1 WHERE expires <= CURRENT_TIMESTAMP() AND current_participants < min_participants");
+    try {
+        $stmt->execute();
+        $rows = $stmt->rowCount();
+        elog("Closed $rows invalid competitions");
+    } catch (PDOException $e) {
+        error_log("Closing invalid comps error: " . var_export($e, true));
+    }
+    elog("Done calc winners");
 }
 
 ?>
