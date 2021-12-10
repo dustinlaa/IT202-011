@@ -415,13 +415,8 @@ function elog($data)
 function calc_winners()
 {
     $db = getDB();
-    //elog("Starting winner calc");
+    elog("Starting winner calc");
     $calced_comps = [];
-    /*
-    $stmt = $db->prepare("select c.id,c.title, first_place, second_place, third_place, current_reward 
-    from BGD_Competitions c JOIN BGD_Payout_Options po on c.payout_option = po.id 
-    where expires <= CURRENT_TIMESTAMP() AND did_calc = 0 AND current_participants >= min_participants LIMIT 10");
-    */
     $stmt = $db->prepare("SELECT id, name, current_reward, first_place_per, second_place_per, third_place_per FROM Competitions WHERE expires <= CURRENT_TIMESTAMP() and paid_out = 0 AND current_participants >= min_participants LIMIT 10");
     try {
         $stmt->execute();
@@ -439,7 +434,6 @@ function calc_winners()
                 $spr = ceil($reward * $sp);
                 $tpr = ceil($reward * $tp);
                 $comp_id = se($row, "id", -1, false);
-                //flash($comp_id, "warning");
                 
                 try {
                     $r = get_top_scores_for_comp($comp_id, 3);
