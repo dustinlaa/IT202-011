@@ -281,4 +281,83 @@ function change_points($points, $reason, $forceAllowZero = false) {
     }
 }
 
+function join_competition($comp_id, $isCreator = false) {
+    if ($comp_id <= 0) {
+        flash("Invalid Competition", "warning");
+        return;
+    }
+    $db = getDB();
+    $query = "SELECT name, current_reward, join_fee, paid_out FROM Competitions where id = :id";
+    $stmt = $db->prepare($query);
+    $comp = [];
+    try {
+        $stmt->execute([":id" => $comp_id]);
+        $r = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($r) {
+            $comp = $r;
+        }
+    } catch (PDOException $e) {
+        error_log("Error fetching competition to join $comp_id: " . var_export($e->errorInfo, true));
+        flash("Error looking up competition", "warning");
+        return;
+    }
+    if ($comp && count($comp) > 0) {
+        $paid_out = (int)se($comp, "paid_out", 0, false) > 0;
+        if ($paid_out) {
+            flash("You can't join a completed competition", "warning");
+            return;
+        }
+        $points = (int)se(get_account_points(), null, 0, false);
+        $join_fee = (int)se($comp, "join_fee", 0, false);
+        $name = se($comp, "name", 0, false);
+        if ($join_fee >= $points) {
+            flash("You can't afford to join this competition", "danger");
+            return;
+        }
+        $query = "INSERT INTO CompetitionParticipants (comp_id, user_id) VALUES (:cid, :uid)";
+        $stmt = $db->prepare($query);
+        $joined = false;
+        try {
+            $stmt->execute([":cid" => $comp_id, ":uid" => get_user_id()]);
+            $joined = true;
+        } catch (PDOException $e) {
+            $err = $e->errorInfo;
+            if ($err[1] === 1062) {
+                flash("You already joined this competition", "warning");
+                return;
+            }
+            error_log("Error joining competition (CompetitionParticipants): " . var_export($err, true));
+        }
+        if ($joined) {
+            if ($join_fee == 0){
+                $reward_increase = 1;
+            } else {
+                $reward_increase = ceil(0.5 * $join_fee);
+            }
+            $query = "UPDATE Competitions set 
+            current_participants = (SELECT count(1) from CompetitionParticipants WHERE comp_id = :cid),
+            current_reward = current_reward + $reward_increase
+            WHERE id = :cid";
+            $stmt = $db->prepare($query);
+            try {
+                $stmt->execute([":cid" => $comp_id]);
+            } catch (PDOException $e) {
+                error_log("Error updating competition stats: " . var_export($e->errorInfo, true));
+                //I'm choosing not to let failure here be a big deal, only 1 successful update periodically is required
+            }
+            if ($isCreator) {
+                $join_fee = 0;
+            }
+            change_points(-$join_fee, "Joined Competition " . $comp_id, -1, true);
+            flash("Successfully joined Competition \"$name\"");
+            return;
+        } else {
+            flash("Unknown error joining competition, please try again", "danger");
+            return;
+        }
+    } else {
+        flash("Competition not found.", "warning");
+        return;
+    }
+}
 ?>
