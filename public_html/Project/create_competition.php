@@ -112,7 +112,7 @@ if (!is_logged_in()) {
             if ($id > 0) {
                 change_points(-$cost_to_create, "Created Competition #$id", $forceAllowZero = true);
                 //TODO creator joins competition for free
-
+                error_log("Attempt to join created competition: " . join_competition($id, true));
                 flash("Successfully created Competition $name", "success");
             }
         } catch (PDOException $e) {
