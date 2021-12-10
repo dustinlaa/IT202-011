@@ -9,7 +9,35 @@ if (!is_logged_in()) {
 $results = [];
 $db = getDB();
 $title = "Active Competitions";
+//In the real world, you'd want to profile the difference between doing a subselect or a LEFT/RIGHT join
+// on Competitions and UserCompetitions to see which is more performant
+// the subselect I'm doing here is just checking if the logged in user is associated to this competition (i.e., they registered/joined)
 
+// Will implement below in milestone 4
+/*
+$filter = se($_GET, "filter", "active", false);
+if($filter === "joined"){
+    $query =
+        "SELECT c.id,name, current_reward, min_participants, current_participants, join_fee, if(expires <= current_timestamp(),'expired', expires) as expires, 1 as joined FROM Competitions c 
+ JOIN CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id ORDER BY expires asc limit 10";
+    $title = "Joined Competitions";
+}
+else if($filter === "expired"){
+    $query =
+        "SELECT id,name, current_reward, min_participants, current_participants, join_fee, expires,
+(select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id) as joined FROM Competitions c 
+WHERE paid_out = 1 ORDER BY expires asc limit 10";
+    $title = "Expired Competitions";
+}
+else{
+    
+$query =
+        "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
+(select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
+WHERE paid_out = 0 ORDER BY expires asc limit 10";
+    $title = "Active Competitions";
+}
+*/
 $query =
         "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
 (select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
@@ -81,9 +109,10 @@ try {
                     comp_id: comp_id
                 }, (data) => {
                     let json = JSON.parse(data);
-                    flash(json.message);
+                    //flash(json.message);
                     $(ele).attr("disabled", "true");
                     $(ele).html("<em>Joined</em>");
+                    window.location.reload();
                 });
             } else {
                 //fetch api version of purchase call
@@ -97,9 +126,10 @@ try {
                 }).then(async res => {
                     console.log(res);
                     let data = await res.json();
-                    flash(json.message);
+                    //flash(json.message);
                     ele.disabled = true;
                     ele.innerHTML = "<em>Joined</em>";
+                    window.location.reload();
                 });
             }
         }
