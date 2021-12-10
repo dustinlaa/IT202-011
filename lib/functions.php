@@ -274,6 +274,7 @@ function change_points($points, $reason, $forceAllowZero = false) {
             $stmt->execute($params);
             points_update();
             get_user();
+            return true;
         } catch (PDOException $e) {
             flash("Transfer error occurred: " . var_export($e->errorInfo, true), "danger");
         }
@@ -282,7 +283,8 @@ function change_points($points, $reason, $forceAllowZero = false) {
 
 function join_competition($comp_id, $isCreator = false) {
     if ($comp_id <= 0) {
-        return "Invalid Competition";
+        flash("Invalid Competition", "warning");
+        return;
     }
     $db = getDB();
     $query = "SELECT name, current_reward, join_fee, paid_out FROM Competitions where id = :id";
@@ -296,18 +298,21 @@ function join_competition($comp_id, $isCreator = false) {
         }
     } catch (PDOException $e) {
         error_log("Error fetching competition to join $comp_id: " . var_export($e->errorInfo, true));
-        return "Error looking up competition";
+        flash("Error looking up competition", "warning");
+        return;
     }
     if ($comp && count($comp) > 0) {
         $paid_out = (int)se($comp, "paid_out", 0, false) > 0;
         if ($paid_out) {
-            return "You can't join a completed competition";
+            flash("You can't join a completed competition", "warning");
+            return;
         }
         $points = (int)se(get_account_points(), null, 0, false);
         $join_fee = (int)se($comp, "join_fee", 0, false);
         $name = se($comp, "name", 0, false);
-        if ($join_fee > $points) {
-            return "You can't afford to join this competition";
+        if ($join_fee >= $points) {
+            flash("You can't afford to join this competition", "danger");
+            return;
         }
         $query = "INSERT INTO CompetitionParticipants (comp_id, user_id) VALUES (:cid, :uid)";
         $stmt = $db->prepare($query);
@@ -318,7 +323,8 @@ function join_competition($comp_id, $isCreator = false) {
         } catch (PDOException $e) {
             $err = $e->errorInfo;
             if ($err[1] === 1062) {
-                return "You already joined this competition";
+                flash("You already joined this competition", "warning");
+                return;
             }
             error_log("Error joining competition (CompetitionParticipants): " . var_export($err, true));
         }
@@ -343,13 +349,47 @@ function join_competition($comp_id, $isCreator = false) {
                 $join_fee = 0;
             }
             change_points(-$join_fee, "Joined Competition " . $comp_id, -1, true);
-            return "Successfully joined Competition \"$name\"";
+            flash("Successfully joined Competition \"$name\"");
+            return;
         } else {
-            return "Unknown error joining competition, please try again";
+            flash("Unknown error joining competition, please try again", "danger");
+            return;
         }
     } else {
-        return "Competition not found.";
+        flash("Competition not found.", "warning");
+        return;
     }
+}
+
+
+function get_top_scores_for_comp($comp_id, $limit = 10)
+{
+    $db = getDB();
+
+    //Below if a user can't win more than one place
+    
+    $stmt = $db->prepare("SELECT * FROM (SELECT s.user_id, s.score, s.created, u.username as username, DENSE_RANK() OVER 
+    (PARTITION BY s.user_id ORDER BY s.score desc) as 'rank' FROM Scores s
+    JOIN CompetitionParticipants cp on cp.user_id = s.user_id
+    JOIN Competitions c on cp.comp_id = c.id
+    JOIN Users u on u.id = s.user_id
+    WHERE c.id = :cid AND s.created BETWEEN cp.created AND c.expires AND s.score >= c.min_score
+    )as t where `rank` = 1 ORDER BY score desc LIMIT :limit");
+
+    $scores = [];
+    try {
+        $stmt->bindValue(":cid", $comp_id, PDO::PARAM_INT);
+        $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($r) {
+            $scores = $r;
+        }
+    } catch (PDOException $e) {
+        flash("There was a problem fetching scores, please try again later", "danger");
+        error_log("List competition scores error: " . var_export($e, true));
+    }
+    return $scores;
 }
 
 function calc_winners()
@@ -379,9 +419,11 @@ function calc_winners()
                 $spr = ceil($reward * $sp);
                 $tpr = ceil($reward * $tp);
                 $comp_id = se($row, "id", -1, false);
+                //flash($comp_id, "warning");
                 
                 try {
                     $r = get_top_scores_for_comp($comp_id, 3);
+                    echo '<pre>'; print_r($r); echo '</pre>';
                     if ($r) {
                         $atleastOne = false;
                         foreach ($r as $index => $row) {
@@ -422,16 +464,17 @@ function calc_winners()
     }
     //closing calced comps
     if (count($calced_comps) > 0) {
-        $query = "UPDATE Competitions set paid_out = 1 WHERE id in ";
-        $query = "(" . str_repeat("?,", count($calced_comps) - 1) . "?)";
-        elog("Close query: $query");
-        $stmt = $db->prepare($query);
-        try {
-            $stmt->execute($calced_comps);
-            $updated = $stmt->rowCount();
-            elog("Marked $updated comps complete and calced");
-        } catch (PDOException $e) {
-            error_log("Closing valid comps error: " . var_export($e, true));
+        foreach ($calced_comps as $compId) {
+            $query = "UPDATE Competitions set paid_out = 1 WHERE id = " . $compId;
+            elog("Close query: $query");
+            $stmt = $db->prepare($query);
+            try {
+                $stmt->execute();
+                $updated = $stmt->rowCount();
+                elog("Marked $updated comps complete and calced");
+            } catch (PDOException $e) {
+                error_log("Closing valid comps error: " . var_export($e, true));
+            }
         }
     } else {
         elog("No competitions to calc");
@@ -448,52 +491,7 @@ function calc_winners()
     elog("Done calc winners");
 }
 
-function get_top_scores_for_comp($comp_id, $limit = 10)
-{
-    $db = getDB();
-    //below if a user can win more than one place
-    /*$stmt = $db->prepare(
-        "SELECT score, s.created, username, u.id as user_id FROM BGD_Scores s 
-    JOIN BGD_UserComps uc on uc.user_id = s.user_id 
-    JOIN BGD_Competitions c on c.id = uc.competition_id
-    JOIN Users u on u.id = s.user_id WHERE c.id = :cid AND s.score >= c.min_score AND s.created 
-    BETWEEN uc.created AND c.expires ORDER BY s.score desc LIMIT :limit"
-    );*/
-    //Below if a user can't win more than one place
 
-    /*
-        $stmt = $db->prepare("SELECT * FROM (SELECT s.user_id, s.score,s.created, a.id as account_id, DENSE_RANK() OVER (PARTITION BY s.user_id ORDER BY s.score desc) as `rank` FROM BGD_Scores s
-    JOIN BGD_UserComps uc on uc.user_id = s.user_id
-    JOIN BGD_Competitions c on uc.competition_id = c.id
-    JOIN BGD_Accounts a on a.user_id = s.user_id
-    WHERE c.id = :cid AND s.created BETWEEN uc.created AND c.expires
-    )as t where `rank` = 1 ORDER BY score desc LIMIT :limit");
-    */
-    // issue with u.id as u_id
-    
-    $stmt = $db->prepare("SELECT * FROM (SELECT s.user_id, s.score, s.created, u.id as user_id, DENSE_RANK() OVER (PARTITION BY s.user_id ORDER BY s.score desc) as 'rank' FROM Scores s
-    JOIN CompetitionParticipants cp on cp.user_id = s.user_id
-    JOIN Competitions c on cp.comp_id = c.id
-    JOIN Users u on u.id = s.user_id
-    WHERE c.id = :cid AND s.created BETWEEN cp.created AND c.expires
-    )as t where 'rank' = 1 ORDER BY score desc LIMIT :limit"); 
-
-    $scores = [];
-    try {
-        $stmt->bindValue(":cid", $comp_id, PDO::PARAM_INT);
-        $stmt->bindValue(":limit", $limit, PDO::PARAM_INT);
-        $stmt->execute();
-        $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        if ($r) {
-            $scores = $r;
-        }
-    } catch (PDOException $e) {
-        flash("There was a problem fetching scores, please try again later", "danger");
-        error_log("List competition scores error: " . var_export($e, true));
-    }
-    echo '<pre>'; print_r($scores); echo '</pre>';
-    return $scores;
-}
 
 function redirect($path)
 { //header headache

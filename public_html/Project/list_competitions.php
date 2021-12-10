@@ -109,9 +109,10 @@ try {
                     comp_id: comp_id
                 }, (data) => {
                     let json = JSON.parse(data);
-                    flash(json.message);
+                    //flash(json.message);
                     $(ele).attr("disabled", "true");
                     $(ele).html("<em>Joined</em>");
+                    window.location.reload();
                 });
             } else {
                 //fetch api version of purchase call
@@ -125,9 +126,10 @@ try {
                 }).then(async res => {
                     console.log(res);
                     let data = await res.json();
-                    flash(json.message);
+                    //flash(json.message);
                     ele.disabled = true;
                     ele.innerHTML = "<em>Joined</em>";
+                    window.location.reload();
                 });
             }
         }

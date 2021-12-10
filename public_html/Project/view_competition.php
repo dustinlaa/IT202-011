@@ -45,7 +45,6 @@ $scores = get_top_scores_for_comp($id);
             <th>Reward</th>
             <th>Min Score</th>
             <th>Expires</th>
-            <th>Actions</th>
         </thead>
         <tbody>
             <?php if (count($row) > 0) : ?>
@@ -54,17 +53,6 @@ $scores = get_top_scores_for_comp($id);
                 <td><?php se($row, "current_reward"); ?></td>
                 <td><?php se($row, "min_score"); ?></td>
                 <td><?php se($row, "expires", "-"); ?></td>
-                <td>
-                    <?php if (se($row, "joined", 0, false)) : ?>
-                        <button class="btn btn-primary disabled" onclick="event.preventDefault()" disabled>Already Joined</button>
-                    <?php else : ?>
-                        <form method="POST">
-                            <input type="hidden" name="comp_id" value="<?php se($row, 'id'); ?>" />
-                            <input type="hidden" name="cost" value="<?php se($row, 'join_fee', 0); ?>" />
-                            <input type="submit" name="join" class="btn btn-primary" value="Join (Cost: <?php se($row, "join_fee", 0) ?>)" />
-                        </form>
-                    <?php endif; ?>
-                </td>
             <?php else : ?>
                 <tr>
                     <td colspan="100%">No active competitions</td>
