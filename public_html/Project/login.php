@@ -86,6 +86,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                         }
                         points_update();
                         get_user();
+                        calc_winners();
                         die(header("Location: home.php"));
                     } else {
                         flash("Invalid password", "danger");
