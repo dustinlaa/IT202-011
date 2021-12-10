@@ -14,24 +14,30 @@ if ($duration == "Monthly") {
 if ($duration == "Lifetime") {
     $duration = "lifetime";
 }
-$results = get_top_10($duration);
 
-switch ($duration) {
-    case "week":
-        $title = "Top 10 Weekly";
-        $time = "weekly";
-        break;
-    case "month":
-        $title = "Top 10 Monthly";
-        $time = "monthly";
-        break;
-    case "lifetime":
-        $title = "Top 10 Lifetime";
-        $time = "lifetime";
-        break;
-    default:
-        $title = "Invalid Scoreboard";
-        break;
+if (!isset($scores)) {
+    $results = get_top_10($duration);
+
+    switch ($duration) {
+        case "week":
+            $title = "Top 10 Weekly";
+            $time = "weekly";
+            break;
+        case "month":
+            $title = "Top 10 Monthly";
+            $time = "monthly";
+            break;
+        case "lifetime":
+            $title = "Top 10 Lifetime";
+            $time = "lifetime";
+            break;
+        default:
+            $title = "Invalid Scoreboard";
+            break;
+    }
+} else {
+    $results = $scores;
+    $time = "";
 }
 ?>
 <div class="card mb-4 border-0 bg-transparent">

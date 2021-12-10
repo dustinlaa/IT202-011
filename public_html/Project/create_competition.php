@@ -145,6 +145,10 @@ if (!is_logged_in()) {
             <label class="form-label" for="d">Duration in Days</label>
             <input class="form-control" type="number" name="duration" id="d" min="3" value="3" required />
         </div>
+        <div class="mb-3">
+            <label class="form-label" for = "ms">Minimum Score</label>
+            <input class = "form-control" type="number" name = "min_score" id = :ms min = "0" value="0" required />
+        </div>
         <div>
             <label class="form-label" for="payout">Payout Split</label>
             <select class="form-control" name="payout" required>
