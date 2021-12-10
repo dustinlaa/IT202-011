@@ -382,7 +382,7 @@
           - Screenshot #1 Description:
             - Active Competitions Page
       - Screenshot #2
-        - ![image](https://user-images.githubusercontent.com/71194959/145650322-0e4c41cf-4c81-4a7b-9275-f7ae1fa5ffcf.png)
+        - ![image](https://user-images.githubusercontent.com/71194959/145652894-4df69ffc-17d7-463d-b97f-1bda7b9ef437.png)
           - Screenshot #2 Description:
             - List of competitions ordered by competitions expiring first (Only shows 10)
 
@@ -400,7 +400,7 @@
       - Screenshot #2
         - ![image](https://user-images.githubusercontent.com/71194959/145649469-28e06039-f3f4-48bf-97c6-fde27fdbc5ea.png)
             - Screenshot #2 Description:
-              - CompetitionParticipantsTable
+              - CompetitionParticipants Code
   
 - [x] \(12/10/2021 of completion) User can join active competitions 
   -  List of Evidence of Feature Completion
