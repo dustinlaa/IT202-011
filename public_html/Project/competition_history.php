@@ -11,10 +11,10 @@ $db = getDB();
 $filter = "joined";
 
 $per_page = 10;
-paginate("SELECT count(1) as total FROM BGD_Competitions WHERE expires > current_timestamp() AND did_payout < 1 AND did_calc < 1");
+paginate("SELECT count(1) as total FROM Competitions");
     $query =
         "SELECT c.id,name, current_reward, min_participants, current_participants, join_fee, if(expires <= current_timestamp(),'expired', expires) as expires, 1 as joined FROM Competitions c 
- JOIN CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id ORDER BY expires asc limit 10";
+ JOIN CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id ORDER BY expires asc";
     $title = "Competition History";
 
 
