@@ -8,3 +8,11 @@ if (!isset($username)) {
 ?>
 <a href="<?php echo get_url("profile.php?id=");
             se($user_id); ?>"><?php se($username); ?></a>
+<style> 
+a {
+color: #FFFFFF;
+}
+a:hover {
+color: greenyellow;
+}
+</style>
