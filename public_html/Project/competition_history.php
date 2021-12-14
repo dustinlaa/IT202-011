@@ -8,11 +8,14 @@ if (!is_logged_in()) {
 
 $results = [];
 $db = getDB();
+$filter = "joined";
 
+$per_page = 10;
+paginate("SELECT count(1) as total FROM BGD_Competitions WHERE expires > current_timestamp() AND did_payout < 1 AND did_calc < 1");
     $query =
         "SELECT c.id,name, current_reward, min_participants, current_participants, join_fee, if(expires <= current_timestamp(),'expired', expires) as expires, 1 as joined FROM Competitions c 
  JOIN CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id ORDER BY expires asc limit 10";
-    $title = "Joined Competitions";
+    $title = "Competition History";
 
 
 $stmt = $db->prepare($query);
@@ -26,6 +29,7 @@ try {
 } catch (PDOException $e) {
     error_log("Error fetching active competitons: " . var_export($e->errorInfo, true));
 }
+
 ?>
 
 
@@ -62,11 +66,6 @@ try {
                         <div class="col"><?php se($result, "join_fee"); ?></div>
                         <div class="col">
                             <a class="btn btn-primary" href="view_competition.php?id=<?php se($result, "id"); ?>">Details</a>
-                            <?php if ((int)se($result, "joined", 0, false) > 0) : ?>
-                                <button class="btn btn-secondary" disabled><em>Joined</em></button>
-                            <?php elseif (se($result, "expires","expired", false) !== "expired") : ?>
-                                <button class="btn btn-success" onclick="joinCompetition(<?php se($result, 'id'); ?>,this)">Join</button>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

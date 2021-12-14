@@ -38,6 +38,7 @@ WHERE paid_out = 0 ORDER BY expires asc limit 10";
     $title = "Active Competitions";
 }
 */
+$filter = "active";
 $query =
         "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
 (select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
