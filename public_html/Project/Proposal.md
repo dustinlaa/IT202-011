@@ -413,13 +413,14 @@
   -  List of Evidence of Feature Completion
     - Status: Completed
     - Direct Link: https://github.com/dustinlaa/IT202-011/blob/prod/public_html/Project/admin/admin_calc.php
+      - https://github.com/dustinlaa/IT202-011/blob/prod/lib/functions.php
     - Pull Requests
       - https://github.com/dustinlaa/IT202-011/pull/144
     - Screenshots
       - Screenshot #1
         - ![image](https://user-images.githubusercontent.com/71194959/145651778-ddbb5edd-fb33-4e2a-805e-9f9bd363be16.png)
         - Screenshot #1 Description:
-          - Successful Winners Calculation
+          - Successful Winners Calculation (calc_winners() function in functions.php)
   
 - Milestone 4
 
