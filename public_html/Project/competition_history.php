@@ -73,7 +73,9 @@ try {
         <?php endif; ?>
     </div>
     <br></br>
-    <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+    <?php if (count($results) != 0) : ?>
+        <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+    <?php endif; ?>
 </div>
 
 <?php
