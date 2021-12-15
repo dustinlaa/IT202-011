@@ -6,19 +6,21 @@ if (!is_logged_in()) {
     die(header("Location: " . $BASE_PATH));
 }
 
-$results = [];
+
 $db = getDB();
 $filter = "joined";
 
 $per_page = 10;
-paginate("SELECT count(1) as total FROM Competitions");
+$user_id = get_user_id();
+paginate("SELECT count(1) as total FROM Competitions c JOIN CompetitionParticipants cp where cp.user_id = $user_id AND cp.comp_id = c.id");
     $query =
-        "SELECT c.id,name, current_reward, min_participants, current_participants, join_fee, if(expires <= current_timestamp(),'expired', expires) as expires, 1 as joined FROM Competitions c 
- JOIN CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id ORDER BY expires asc";
+        "SELECT c.id, name, if(expires <= current_timestamp(),'expired', expires) as expires, current_reward, join_fee, current_participants, min_participants, 1 as joined FROM Competitions c 
+ JOIN CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id ORDER BY expires asc LIMIT " . $offset . ',' . $per_page;
     $title = "Competition History";
 
 
 $stmt = $db->prepare($query);
+$results = [];
 try {
     //TODO add other filters for when there are a ton of competitions (i.e., filter by name or other attributes)
     $stmt->execute([":uid" => get_user_id()]);
@@ -27,7 +29,7 @@ try {
         $results = $r;
     }
 } catch (PDOException $e) {
-    error_log("Error fetching active competitons: " . var_export($e->errorInfo, true));
+    error_log("Error fetching joined competitons: " . var_export($e->errorInfo, true));
 }
 
 ?>
@@ -37,8 +39,6 @@ try {
     <div class="fw-bold fs-3">
         <?php se($title); ?>
     </div>
-    <!-- Note, this "table-like" layout doesn't scale well for mobile-->
-    <div class="list-group">
         <div class="list-group-item">
             <div class="row fw-bold">
                 <div class="col">Name</div>
@@ -72,44 +72,16 @@ try {
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
-    <script>
-        function joinCompetition(comp_id, ele) {
-            if (!!window.jQuery === true) {
-                $.post("api/join_competition.php", {
-                    comp_id: comp_id
-                }, (data) => {
-                    let json = JSON.parse(data);
-                    //flash(json.message);
-                    $(ele).attr("disabled", "true");
-                    $(ele).html("<em>Joined</em>");
-                    window.location.reload();
-                });
-            } else {
-                //fetch api version of purchase call
-                fetch("api/join_competition.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/x-www-form-urlencoded",
-                        "X-Requested-With": "XMLHttpRequest",
-                    },
-                    body: "comp_id=" + comp_id
-                }).then(async res => {
-                    console.log(res);
-                    let data = await res.json();
-                    //flash(json.message);
-                    ele.disabled = true;
-                    ele.innerHTML = "<em>Joined</em>";
-                    window.location.reload();
-                });
-            }
-        }
-    </script>
+    <br></br>
+    <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
 </div>
 
 <?php
 require_once(__DIR__ . "/../../partials/flash.php");
 ?>
-
+<?php
+require(__DIR__ . "/../../partials/footer.php");
+?>
 
 <style>
     .list-group-item {

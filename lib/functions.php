@@ -549,10 +549,11 @@ function paginate($query, $params = [], $per_page = 10)
     global $offset; //will be available after function is called
     $offset = ($page - 1) * $per_page;
 }
-
+//updates or inserts page into query string while persisting anything already present
 function persistQueryString($page)
 {
     $_GET["page"] = $page;
     return http_build_query($_GET);
 }
+
 ?>

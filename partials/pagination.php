@@ -6,6 +6,7 @@ if (!isset($total_pages)) {
 if (!isset($page)) {
     $page = 1;
 }
+
 ?>
 <nav aria-label="Generic Pagination">
     <ul class="pagination">
