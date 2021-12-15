@@ -34,45 +34,38 @@ try {
 
 ?>
 
-
 <div class="container-fluid">
     <div class="fw-bold fs-3">
         <?php se($title); ?>
     </div>
-        <div class="list-group-item">
-            <div class="row fw-bold">
-                <div class="col">Name</div>
-                <div class="col">Reward</div>
-                <div class="col">Participants</div>
-                <div class="col">Ends</div>
-                <div class="col">Join Fee</div>
-                <div class="col">Actions</div>
-            </div>
-        </div>
-        <?php if (!!$results === false || count($results) == 0) : ?>
-            <div class="list-group-item">
-                <div class="row">
-                    <div class="col-12">No <?php se($filter);?> competitions</div>
-                </div>
-            </div>
-        <?php else : ?>
-            <?php foreach ($results as $result) : ?>
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col"><?php se($result, "name"); ?></div>
-                        <div class="col"><?php se($result, "current_reward"); ?></div>
-                        <div class="col"><?php se($result, "current_participants"); ?>/<?php se($result, "min_participants"); ?></div>
-                        <div class="col"><?php se($result, "expires"); ?></div>
-                        <div class="col"><?php se($result, "join_fee"); ?></div>
-                        <div class="col">
-                            <a class="btn btn-primary" href="view_competition.php?id=<?php se($result, "id"); ?>">Details</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
-    <br></br>
+    <table class="table text-light">
+        <thead>
+            <th>Name</th>
+            <th>Reward</th>
+            <th>Participants</th>
+            <th>Ends</th>
+            <th>Join Fee</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <?php if (count($results) > 0) : ?>
+                <?php foreach ($results as $row) : ?>
+                    <tr>
+                        <td><?php se($row, "name"); ?></td>
+                        <td><?php se($row, "current_reward"); ?></td>
+                        <td><?php se($row, "current_participants"); ?>/<?php se($row, "min_participants"); ?></td>
+                        <td><?php se($row, "expires"); ?></td>
+                        <td><?php se($row, "join_fee"); ?></td>
+                        <td><a class="btn btn-primary" href="view_competition.php?id=<?php se($row, 'id'); ?>">Details</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td colspan="100%">No joined competitions</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table> 
     <?php if (count($results) != 0) : ?>
         <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
     <?php endif; ?>
@@ -86,7 +79,7 @@ require(__DIR__ . "/../../partials/footer.php");
 ?>
 
 <style>
-    .list-group-item {
+    table {
         background: #212529;
         border: solid white;
         color: white;
