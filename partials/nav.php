@@ -48,6 +48,7 @@ require_once(__DIR__ . "/../lib/functions.php");
                         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="<?php echo get_url('create_competition.php'); ?>">Create</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('list_competition.php'); ?>">Active</a></li>
+                            <li><a class="dropdown-item" href="<?php echo get_url('competition_history.php'); ?>">History</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>
