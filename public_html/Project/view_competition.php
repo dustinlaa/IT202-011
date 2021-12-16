@@ -19,11 +19,11 @@ LEFT JOIN BGD_UserComps on BGD_UserComps.competition_id = BGD_Competitions.id WH
 */
 $stmt = $db->prepare("SELECT Competitions.id, name, expires, current_reward, join_fee, current_participants, min_participants, min_score 
 FROM Competitions 
-LEFT JOIN CompetitionParticipants on CompetitionParticipants.comp_id = Competitions.id WHERE Competitions.id = :cid AND user_id = :uid");
+LEFT JOIN CompetitionParticipants on CompetitionParticipants.comp_id = Competitions.id WHERE Competitions.id = :cid");
 $row = [];
 $comp = "";
 try {
-    $stmt->execute([":cid" => $id, ":uid" => get_user_id()]);
+    $stmt->execute([":cid" => $id]);
     $r = $stmt->fetch();
     if ($r) {
         $row = $r;

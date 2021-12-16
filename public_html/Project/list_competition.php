@@ -39,10 +39,12 @@ WHERE paid_out = 0 ORDER BY expires asc limit 10";
 }
 */
 $filter = "active";
+$per_page = 10;
+paginate("SELECT count(1) as total FROM Competitions where expires > current_timestamp() AND paid_out < 1");
 $query =
         "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
 (select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
-WHERE paid_out = 0 ORDER BY expires asc limit 10";
+WHERE paid_out = 0 ORDER BY expires asc LIMIT " . $offset . ',' . $per_page;
     $title = "Active Competitions";
 
 $stmt = $db->prepare($query);
