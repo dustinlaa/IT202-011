@@ -1,9 +1,8 @@
 <?php
 require(__DIR__ . "/../../../partials/nav.php");
-if (!is_logged_in()) {
-    flash("You must be logged in to access this page", "danger");
-
-    die(header("Location: " . $BASE_PATH));
+if (!has_role("Admin")) {
+    flash("You don't have permission to view this page", "warning");
+    die(header("Location: $BASE_PATH" . "home.php"));
 }
 
 
