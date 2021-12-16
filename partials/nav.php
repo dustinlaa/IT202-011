@@ -48,6 +48,7 @@ require_once(__DIR__ . "/../lib/functions.php");
                         <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="<?php echo get_url('create_competition.php'); ?>">Create</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('list_competition.php'); ?>">Active</a></li>
+                            <li><a class="dropdown-item" href="<?php echo get_url('competition_history.php'); ?>">History</a></li>
                         </ul>
                     </li>
                 <?php endif; ?>
@@ -65,6 +66,7 @@ require_once(__DIR__ . "/../lib/functions.php");
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/create_role.php'); ?>">Create</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/list_roles.php'); ?>">List</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/assign_roles.php'); ?>">Assign</a></li>
+                            <li><a class="dropdown-item" href="<?php echo get_url('admin/view_editable_competitions.php'); ?>">Edit Competitions</a></li>
                             <li><a class="dropdown-item" href="<?php echo get_url('admin/admin_calc.php'); ?>">Calc Winners</a></li>
                         </ul>
                     </li>

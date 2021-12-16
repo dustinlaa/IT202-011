@@ -495,7 +495,7 @@ function calc_winners()
         elog("No competitions to calc");
     }
     //close invalid comps
-    $stmt = $db->prepare("UPDATE Competitions set paid_out = 1 WHERE expires <= CURRENT_TIMESTAMP() AND current_participants < min_participants");
+    $stmt = $db->prepare("UPDATE Competitions set paid_out = 0 WHERE expires <= CURRENT_TIMESTAMP() AND current_participants < min_participants");
     try {
         $stmt->execute();
         $rows = $stmt->rowCount();
@@ -504,6 +504,56 @@ function calc_winners()
         error_log("Closing invalid comps error: " . var_export($e, true));
     }
     elog("Done calc winners");
+}
+
+function get_best_score($user_id)
+{
+    $query = "SELECT score from Scores WHERE user_id = :id ORDER BY score desc LIMIT 1";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":id" => $user_id]);
+        $r = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($r) {
+            return (int)se($r, "score", 0, false);
+        }
+    } catch (PDOException $e) {
+        error_log("Error fetching best score for user $user_id: " . var_export($e->errorInfo, true));
+    }
+    return 0;
+}
+
+function paginate($query, $params = [], $per_page = 10)
+{
+    global $page; //will be available after function is called
+    try {
+        $page = (int)se($_GET, "page", 1, false);
+    } catch (Exception $e) {
+        //safety for if page is received as not a number
+        $page = 1;
+    }
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("paginate error: " . var_export($e, true));
+    }
+    $total = 0;
+    if (isset($result)) {
+        $total = (int)se($result, "total", 0, false);
+    }
+    global $total_pages; //will be available after function is called
+    $total_pages = ceil($total / $per_page);
+    global $offset; //will be available after function is called
+    $offset = ($page - 1) * $per_page;
+}
+//updates or inserts page into query string while persisting anything already present
+function persistQueryString($page)
+{
+    $_GET["page"] = $page;
+    return http_build_query($_GET);
 }
 
 ?>
