@@ -495,7 +495,7 @@ function calc_winners()
         elog("No competitions to calc");
     }
     //close invalid comps
-    $stmt = $db->prepare("UPDATE Competitions set paid_out = 1 WHERE expires <= CURRENT_TIMESTAMP() AND current_participants < min_participants");
+    $stmt = $db->prepare("UPDATE Competitions set paid_out = 0 WHERE expires <= CURRENT_TIMESTAMP() AND current_participants < min_participants");
     try {
         $stmt->execute();
         $rows = $stmt->rowCount();
