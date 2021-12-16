@@ -8,48 +8,16 @@ if (!is_logged_in()) {
 
 $results = [];
 $db = getDB();
-$title = "Active Competitions";
-//In the real world, you'd want to profile the difference between doing a subselect or a LEFT/RIGHT join
-// on Competitions and UserCompetitions to see which is more performant
-// the subselect I'm doing here is just checking if the logged in user is associated to this competition (i.e., they registered/joined)
-
-// Will implement below in milestone 4
-/*
-$filter = se($_GET, "filter", "active", false);
-if($filter === "joined"){
-    $query =
-        "SELECT c.id,name, current_reward, min_participants, current_participants, join_fee, if(expires <= current_timestamp(),'expired', expires) as expires, 1 as joined FROM Competitions c 
- JOIN CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id ORDER BY expires asc limit 10";
-    $title = "Joined Competitions";
-}
-else if($filter === "expired"){
-    $query =
-        "SELECT id,name, current_reward, min_participants, current_participants, join_fee, expires,
-(select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.user_id = :uid AND cp.comp_id = c.id) as joined FROM Competitions c 
-WHERE paid_out = 1 ORDER BY expires asc limit 10";
-    $title = "Expired Competitions";
-}
-else{
-    
-$query =
-        "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
-(select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
-WHERE paid_out = 0 ORDER BY expires asc limit 10";
-    $title = "Active Competitions";
-}
-*/
-$filter = "active";
 $per_page = 10;
-paginate("SELECT count(1) as total FROM Competitions where expires > current_timestamp() AND paid_out < 1");
+paginate("SELECT count(1) as total FROM Competitions where expires > current_timestamp()");
 $query =
         "SELECT id, name, expires, current_reward, join_fee, current_participants, min_participants,
 (select IFNULL(count(1),0) FROM CompetitionParticipants cp WHERE cp.comp_id = c.id AND cp.user_id = :uid) as joined FROM Competitions c 
-WHERE paid_out = 0 ORDER BY expires asc LIMIT " . $offset . ',' . $per_page;
+WHERE expires > current_timestamp() ORDER BY expires asc LIMIT " . $offset . ',' . $per_page;
     $title = "Active Competitions";
 
 $stmt = $db->prepare($query);
 try {
-    //TODO add other filters for when there are a ton of competitions (i.e., filter by name or other attributes)
     $stmt->execute([":uid" => get_user_id()]);
     $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
     if ($r) {
@@ -65,46 +33,45 @@ try {
     <div class="fw-bold fs-3">
         <?php se($title); ?>
     </div>
-    <!-- Note, this "table-like" layout doesn't scale well for mobile-->
     <div class="list-group">
-        <div class="list-group-item">
-            <div class="row fw-bold">
-                <div class="col">Name</div>
-                <div class="col">Reward</div>
-                <div class="col">Participants</div>
-                <div class="col">Ends</div>
-                <div class="col">Join Fee</div>
-                <div class="col">Actions</div>
-            </div>
-        </div>
-        <?php if (!!$results === false || count($results) == 0) : ?>
-            <div class="list-group-item">
-                <div class="row">
-                    <div class="col-12">No <?php se($filter);?> competitions</div>
-                </div>
-            </div>
-        <?php else : ?>
-            <?php foreach ($results as $result) : ?>
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col"><?php se($result, "name"); ?></div>
-                        <div class="col"><?php se($result, "current_reward"); ?></div>
-                        <div class="col"><?php se($result, "current_participants"); ?>/<?php se($result, "min_participants"); ?></div>
-                        <div class="col"><?php se($result, "expires"); ?></div>
-                        <div class="col"><?php se($result, "join_fee"); ?></div>
-                        <div class="col">
-                            <a class="btn btn-primary" href="view_competition.php?id=<?php se($result, "id"); ?>">Details</a>
-                            <?php if ((int)se($result, "joined", 0, false) > 0) : ?>
-                                <button class="btn btn-secondary" disabled><em>Joined</em></button>
-                            <?php elseif (se($result, "expires","expired", false) !== "expired") : ?>
-                                <button class="btn btn-success" onclick="joinCompetition(<?php se($result, 'id'); ?>,this)">Join</button>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+        <table class="table text-light">
+            <thead>
+                <th>Name</th>
+                <th>Reward</th>
+                <th>Participants</th>
+                <th>Ends</th>
+                <th>Join Fee</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <?php if (count($results) > 0) : ?>
+                    <?php foreach ($results as $row) : ?>
+                        <tr>
+                            <td><?php se($row, "name"); ?></td>
+                            <td><?php se($row, "current_reward"); ?></td>
+                            <td><?php se($row, "current_participants"); ?>/<?php se($row, "min_participants"); ?></td>
+                            <td><?php se($row, "expires"); ?></td>
+                            <td><?php se($row, "join_fee"); ?></td>
+                            <td>
+                                <div class="col">
+                                <a class="btn btn-primary" href="view_competition.php?id=<?php se($row, "id"); ?>">Details</a>
+                                <?php if ((int)se($row, "joined", 0, false) > 0) : ?>
+                                    <button class="btn btn-secondary" disabled><em>Joined</em></button>
+                                <?php elseif (se($row, "expires","expired", false) !== "expired") : ?>
+                                    <button class="btn btn-success" onclick="joinCompetition(<?php se($row, 'id'); ?>,this)">Join</button>
+                                <?php endif; ?>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <tr>
+                        <td colspan="100%">No Active Competitions</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div> 
     <script>
         function joinCompetition(comp_id, ele) {
             if (!!window.jQuery === true) {
@@ -139,7 +106,7 @@ try {
     </script>
     <?php if (count($results) != 0) : ?>
         <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
-    <?php endif; ?>
+    <?php endif; ?>  
 </div>
 
 <?php
@@ -148,7 +115,7 @@ require_once(__DIR__ . "/../../partials/flash.php");
 
 
 <style>
-    .list-group-item {
+    table {
         background: #212529;
         border: solid white;
         color: white;
