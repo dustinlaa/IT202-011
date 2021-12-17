@@ -122,6 +122,7 @@ function menu() {
   context.fillText('Click to Start', canvas.width / 2, canvas.height / 1.35);
   context.font = '18px Arial'
   context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 3.5) * 3);
+  context.fillText('Every 20 points you score, you will earn 1 point as a reward', canvas.width / 2, (canvas.height / 3.3) * 3);
   // Start the game on a click
   canvas.addEventListener('click', startGame);
 }
