@@ -133,7 +133,26 @@ try {
         Best Score: <?php echo get_best_score($user_id); ?>
     </div>
     <div>
-        <?php $scores = get_latest_scores($user_id); ?>
+        <?php
+            $per_page = 10;
+            paginate("SELECT count(1) as total FROM Scores where user_id = $user_id");
+            $query =
+            "SELECT score, created from Scores where user_id = :id ORDER BY created desc LIMIT " . $offset . ',' . $per_page;
+    
+    
+            $stmt = $db->prepare($query);
+            $scores = [];
+            try {
+                //TODO add other filters for when there are a ton of competitions (i.e., filter by name or other attributes)
+                $stmt->execute([":id" => $user_id]);
+                $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                if ($r) {
+                    $scores = $r;
+                }
+            } catch (PDOException $e) {
+                error_log("Error fetching joined competitons: " . var_export($e->errorInfo, true));
+            }
+        ?>
         <h3>Score History</h3>
         <table class="table text-light">
             <thead>
@@ -141,14 +160,23 @@ try {
                 <th>Time</th>
             </thead>
             <tbody>
-                <?php foreach ($scores as $score) : ?>
+                <?php if (count($scores) > 0) : ?>
+                    <?php foreach ($scores as $score) : ?>
+                        <tr>
+                            <td><?php se($score, "score", 0); ?></td>
+                            <td><?php se($score, "created", "-"); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
                     <tr>
-                        <td><?php se($score, "score", 0); ?></td>
-                        <td><?php se($score, "created", "-"); ?></td>
+                        <td colspan="100%">No Scores</td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
+            <?php if (count($scores) != 0) : ?>
+                <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+            <?php endif; ?>
     </div>
     <?php if (!$edit) : ?>
         <div>Username: <?php se($username); ?></div>

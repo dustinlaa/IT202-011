@@ -27,9 +27,17 @@ if ($user_id <= 0) {
 if (!$reject) {
     $user_id = get_user_id();
     $score = (int)se($data, "score", 0, false);
+    $score_reward = $score/20;
+    $point_reward = 0;
+    while ($score_reward > 1) {
+        $point_reward++;
+        $score_reward--;
+    }
+    change_points($point_reward, "Earned " . $point_reward . " points for earning a score of " . $score, $user_id);
     save_score($score, $user_id, true);
     $response["message"] = "Score Saved!";
     error_log("Score of $score saved successfully for $user_id");
+
     http_response_code(200);
 }
 echo json_encode($response);

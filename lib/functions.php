@@ -314,7 +314,7 @@ function join_competition($comp_id, $isCreator = false) {
         if ($isCreator) {
             $join_fee = 0;
         }
-        if ($join_fee >= $points) {
+        if ($join_fee > $points) {
             flash("You can't afford to join this competition", "danger");
             return;
         }
