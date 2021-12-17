@@ -34,6 +34,7 @@ if (!$reject) {
         $score_reward--;
     }
     change_points($point_reward, "Earned " . $point_reward . " points for earning a score of " . $score, $user_id);
+    flash("Earned " . $point_reward . " points for earning a score of " . $score, "success");
     save_score($score, $user_id, true);
     $response["message"] = "Score Saved!";
     error_log("Score of $score saved successfully for $user_id");
