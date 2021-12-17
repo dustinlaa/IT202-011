@@ -1,13 +1,17 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
-<h1>Home</h1>
+
 
 <div class="container-fluid">
+    <h1>Home</h1>
     <form method="POST" action="home.php">
         <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="weekly()" value="Weekly" />
         <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="monthly()"value="Monthly" />
         <input type="submit" name="time" class="mt-3 btn btn-dark" onClick="lifetime()"value="Lifetime" />
+    </form>
+    <form method="POST" action="game.php">
+        <input type="submit" name="game" class="mt-3 btn btn-success" value="Play Game" action = "game.php" />
     </form>
 </div>
 
@@ -32,4 +36,4 @@ require(__DIR__ . "/../../partials/nav.php");
 require(__DIR__ . "/../../partials/flash.php");
 ?>
 
-
+<style>form{ display: inline-block; }</style>
