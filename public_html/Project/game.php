@@ -1,20 +1,25 @@
 
 <?php
 require(__DIR__ . "/../../partials/nav.php");
+
 ?>
+
 <html>
     <div style = "text-align:center;">
 </html>
-
+<br></br>
 <canvas id="canvas" width="600" height="400" tabindex="1"></canvas>
-
+<?php 
+if (!is_logged_in()) {
+  echo "<p><u><font size = 6x><font color = midnightblue>You must be logged in for your score to be saved</font></u> </p>";
+}
+?>
 <style>
     #canvas {
     width: 600px;
     height: 400px;
     border: 1px solid black;
-  }
-
+    }
 </style>
 
 <script>
@@ -122,6 +127,7 @@ function menu() {
   context.fillText('Click to Start', canvas.width / 2, canvas.height / 1.35);
   context.font = '18px Arial'
   context.fillText('Use the arrow keys to move', canvas.width / 2, (canvas.height / 3.5) * 3);
+  context.fillText('Every 20 points you score, you will earn 1 point as a reward', canvas.width / 2, (canvas.height / 3.3) * 3);
   // Start the game on a click
   canvas.addEventListener('click', startGame);
 }
@@ -326,7 +332,6 @@ canvas.focus();
 
 
 </script>
-
 
 <?php
 require(__DIR__ . "/../../partials/flash.php");
