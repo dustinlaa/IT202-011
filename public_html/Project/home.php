@@ -34,6 +34,10 @@ require(__DIR__ . "/../../partials/nav.php");
     <?php require(__DIR__ . "/../../partials/score_table.php"); ?>
 <?php
 require(__DIR__ . "/../../partials/flash.php");
+
+if (is_logged_in()) {
+    require(__DIR__ . "/../../partials/footer.php");
+}
 ?>
 
 <style>form{ display: inline-block; }</style>
