@@ -13,6 +13,9 @@ require(__DIR__ . "/../../partials/nav.php");
 if (!is_logged_in()) {
   echo "<p><u><font size = 6x><font color = midnightblue>You must be logged in for your score to be saved</font></u> </p>";
 }
+if (is_logged_in()) {
+  require(__DIR__ . "/../../partials/footer.php");
+}
 ?>
 <style>
     #canvas {
