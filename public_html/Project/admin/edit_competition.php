@@ -139,8 +139,8 @@ if (isset($_POST["name"])) {
     }
 }
 ?>
-<h1> Edit Competition: <?php se($orig_comp); ?> </h1>
 <div class="container-fluid">
+    <h1> Edit Competition: <?php se($orig_comp); ?> </h1>
     <form method="POST" autocomplete="off">
         <div>
             <label class="form-label" for="name">Name/Title</label>
