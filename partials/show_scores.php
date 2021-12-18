@@ -1,5 +1,5 @@
 <div id="point-value">
-    Points: <?php echo get_account_points(); ?>
+    User: <?php echo get_username();?> | Points: <?php echo get_account_points(); ?>
 </div>
 <script>
     let bv = document.getElementById("point-value");

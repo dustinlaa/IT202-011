@@ -29,7 +29,7 @@ if (!$reject) {
     $score = (int)se($data, "score", 0, false);
     $score_reward = $score/20;
     $point_reward = 0;
-    while ($score_reward > 1) {
+    while ($score_reward >= 1) {
         $point_reward++;
         $score_reward--;
     }
