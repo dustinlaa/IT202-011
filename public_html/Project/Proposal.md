@@ -433,94 +433,329 @@
   
 - Milestone 4
 
-- [ ] \(mm/dd/yyyy of completion) User can set their profile to be public or private (will need another column in Users table)
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) User will be able to see their competition history
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<table>
+<tr><td>Milestone 4</td></tr><tr><td>
+<table>
+<tr><td>F1 - User can set their profile to be public or private (will need another column in Users table) (2021-12-14)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) User with the role of “admin” can edit a competition where paid_out = false
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://drl3-prod.herokuapp.com/Project/profile.php](https://drl3-prod.herokuapp.com/Project/profile.php)</p></td></tr>
+<tr><td>PRs:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Add pagination to the Active Competitions view
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://github.com/dustinlaa/IT202-011/pull/154#commits-pushed-2061054](https://github.com/dustinlaa/IT202-011/pull/154#commits-pushed-2061054)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F1 - User can set their profile to be public or private (will need another column in Users table)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
 
-- [ ] \(mm/dd/yyyy of completion) Anywhere a username is displayed should be a link to that user’s profile
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146612586-daeb829b-fb97-4851-a1bb-9dc6896a5fdd.png">
+<p>Another column in user's table</p>
+</td></tr>
 
-- [ ] \(mm/dd/yyyy of completion) Viewing an active or expired competition should show the top 10 scoreboard related to that competition
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146612916-5d398a45-998e-456c-aff0-f69e319e874f.png">
+<p>View of a profile page and option to make public</p>
+</td></tr>
 
-- [ ] \(mm/dd/yyyy of completion) Game should be fully implemented/complete by this point
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146613114-8659b013-e923-434a-915c-c0372d5f6d8b.png">
+<p>View of a different user. (Email addresses is hidden)</p>
+</td></tr>
 
-- [ ] \(mm/dd/yyyy of completion) User’s score history will include pagination
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F2 - User will be able to see their competition history (2021-12-14)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
 
-- [ ] \(mm/dd/yyyy of completion) Home page will have a weekly, monthly, and lifetime scoreboard
-  -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
-    - Pull Requests
-      - PR link #1 (repeat as necessary)
-    - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+ [https://drl3-prod.herokuapp.com/Project/competition_history.php](https://drl3-prod.herokuapp.com/Project/competition_history.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/155](https://github.com/dustinlaa/IT202-011/pull/155)</p><p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/156](https://github.com/dustinlaa/IT202-011/pull/156)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F2 - User will be able to see their competition history</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146648912-fe27d443-679b-44ab-b180-670ebbc72ca8.png">
+<p>Competition History Page</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146648929-6b8022f1-9dfc-4716-bcf3-b4940fe3b1b2.png">
+<p>Working pagination on Competition History
+</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146648963-0f35f108-953e-4219-a0ea-7768bf004069.png">
+<p>Competition History Page if user has not joined any competitions</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F3 - User with the role of “admin” can edit a competition where paid_out = false (2021-12-15)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/admin/view_editable_competitions.php](https://drl3-prod.herokuapp.com/Project/admin/view_editable_competitions.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/157#commits-pushed-73890b2](https://github.com/dustinlaa/IT202-011/pull/157#commits-pushed-73890b2)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F3 - User with the role of “admin” can edit a competition where paid_out = false</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146648996-832f6227-73eb-4854-8374-512d86e59c2b.png">
+<p>User can edit competitions that were not paid out (including expired ones)</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146649252-ef2b4b35-02a9-4848-ab8a-92c3e2bcd86d.png">
+<p>Edit Competition Page after selecting edit</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146649741-3bbceb6e-7343-44a5-b769-717ea6057bb0.png">
+<p>Successful edit made to a competition</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F4 - Add pagination to the Active Competitions view (2021-12-16)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/list_competition.php](https://drl3-prod.herokuapp.com/Project/list_competition.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/160](https://github.com/dustinlaa/IT202-011/pull/160)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F4 - Add pagination to the Active Competitions view</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146649836-ff6e3e7f-75ef-400c-b9b1-2905152f2cbf.png">
+<p>Successful pagination on Active Competitions Page</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146649847-f7644092-1dab-40af-86af-ebe2c5b40044.png">
+<p>Second page of Active Competitions Page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F5 - Anywhere a username is displayed should be a link to that user’s profile (2021-12-14)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/home.php](https://drl3-prod.herokuapp.com/Project/home.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/154](https://github.com/dustinlaa/IT202-011/pull/154)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F5 - Anywhere a username is displayed should be a link to that user’s profile</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146649946-e118b3a8-ced4-4dd7-8b02-33e2c6c13781.png">
+<p>Username links shown on home page</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146649979-997e3e07-1c3a-47d7-b689-8d56d3f7bc30.png">
+<p>Username links shown on a competition scoreboard</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146649995-fc79926b-72e0-49ea-b6b5-f2b37f2e6996.png">
+<p>Viewing a profile that is not the same as the user</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650044-79a4a340-267b-4d65-9e63-5f4dc8719a17.png">
+<p>Error message is shown when the user's profile is private</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F6 - Viewing an active or expired competition should show the top 10 scoreboard related to that competition (2021-12-14)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/competition_history.php](https://drl3-prod.herokuapp.com/Project/competition_history.php)</p><p>
+
+ [https://drl3-prod.herokuapp.com/Project/view_competition.php?id=41](https://drl3-prod.herokuapp.com/Project/view_competition.php?id=41)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/155](https://github.com/dustinlaa/IT202-011/pull/155)</p><p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/143](https://github.com/dustinlaa/IT202-011/pull/143)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F6 - Viewing an active or expired competition should show the top 10 scoreboard related to that competition</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650301-8b54a29d-0a55-412a-81b2-f9de8af388cc.png">
+<p>Scoreboard for an Active Competition</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650324-7a6043db-d177-4baa-9891-3ccc01ab8fd0.png">
+<p>Scoreboard for an Expired Competition</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F7 - Game should be fully implemented/complete by this point (2021-12-17)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/game.php](https://drl3-prod.herokuapp.com/Project/game.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/164](https://github.com/dustinlaa/IT202-011/pull/164)</p><p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/167](https://github.com/dustinlaa/IT202-011/pull/167)</p><p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/170](https://github.com/dustinlaa/IT202-011/pull/170)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F7 - Game should be fully implemented/complete by this point</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650411-a389eb2c-dc8d-4130-8b40-d0a3285cad4f.png">
+<p>Game should tell the player if they’re not logged in that their score will not be recorded.</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650448-b647129e-eb17-41aa-9e40-90ac7f2f3818.png">
+<p>1 point earned for every 20 points scored in the game</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F8 - User’s score history will include pagination (2021-12-16)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/profile.php](https://drl3-prod.herokuapp.com/Project/profile.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/163](https://github.com/dustinlaa/IT202-011/pull/163)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F8 - User’s score history will include pagination</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650543-642553b2-c80b-44ef-a794-d687f1be1fc5.png">
+<p>User's Score History with Pagination
+</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650562-8ac35c2e-a7dd-4845-99e2-65f3a14281ad.png">
+<p>Successful Pagination of User's Score History
+</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650619-9d303c0e-e8a6-4454-8c69-8545ab02b636.png">
+<p>User with no scores</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F9 - Home page will have a weekly, monthly, and lifetime scoreboard (2021-12-17)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://drl3-prod.herokuapp.com/Project/home.php](https://drl3-prod.herokuapp.com/Project/home.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/164](https://github.com/dustinlaa/IT202-011/pull/164)</p><p>
+
+ [https://github.com/dustinlaa/IT202-011/pull/83](https://github.com/dustinlaa/IT202-011/pull/83)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F9 - Home page will have a weekly, monthly, and lifetime scoreboard</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650669-814d22d5-0f95-498e-b0a3-6a0f61712864.png">
+<p>Home page with weekly, monthly, and lifetime scoreboard and play game button. (Weekly scoreboard is shown)</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650751-51e4a1b1-d86f-493b-9772-c7dae7284e76.png">
+<p>Monthly Scoreboard</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/71194959/146650767-5821a176-8063-49d2-87c2-74976a1b02fc.png">
+<p>Lifetime Scoreboard</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr></td></tr></table>
+
 ### Intructions
 #### Don't delete this
 1. Pick one project type
