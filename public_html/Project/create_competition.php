@@ -122,8 +122,8 @@ if (!is_logged_in()) {
     }
 }
 ?>
-<h1> Create Competition </h1>
 <div class="container-fluid">
+    <h1> Create Competition </h1>
     <form method="POST" autocomplete="off">
         <div>
             <label class="form-label" for="name">Name/Title</label>
@@ -182,4 +182,7 @@ if (!is_logged_in()) {
 </script>
 <?php
 require_once(__DIR__ . "/../../partials/flash.php");
+?>
+<?php
+require(__DIR__ . "/../../partials/footer.php");
 ?>
