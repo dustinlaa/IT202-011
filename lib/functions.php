@@ -310,6 +310,7 @@ function join_competition($comp_id, $isCreator = false) {
         }
         $points = (int)se(get_account_points(), null, 0, false);
         $join_fee = (int)se($comp, "join_fee", 0, false);
+        $current_reward = (int)se($comp, "current_reward", 0, false);
         $name = se($comp, "name", 0, false);
         if ($isCreator) {
             $join_fee = 0;
@@ -338,13 +339,14 @@ function join_competition($comp_id, $isCreator = false) {
             } else {
                 $reward_increase = ceil(0.5 * $join_fee);
             }
+            $current_reward += $reward_increase;
             $query = "UPDATE Competitions set 
             current_participants = (SELECT count(1) from CompetitionParticipants WHERE comp_id = :cid),
-            current_reward = current_reward + $reward_increase
+            current_reward = :cr
             WHERE id = :cid";
             $stmt = $db->prepare($query);
             try {
-                $stmt->execute([":cid" => $comp_id]);
+                $stmt->execute([":cid" => $comp_id, ":cr" => $current_reward]);
             } catch (PDOException $e) {
                 error_log("Error updating competition stats: " . var_export($e->errorInfo, true));
                 //I'm choosing not to let failure here be a big deal, only 1 successful update periodically is required

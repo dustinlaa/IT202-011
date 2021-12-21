@@ -134,8 +134,8 @@ if (isset($_POST["name"])) {
                 flash("Successfully Edited Competition $name", "success");
             }
         } catch (PDOException $e) {
-            error_log("Error creating competition: " . var_export($e->errorInfo, true));
-            flash("There was an error creating the competition: " . var_export($e->errorInfo[2]), "danger");
+            error_log("Error editing competition: " . var_export($e->errorInfo, true));
+            flash("There was an error editing the competition: " . var_export($e->errorInfo[2]), "danger");
         }
     }
 }
