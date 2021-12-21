@@ -150,7 +150,7 @@ try {
                     $scores = $r;
                 }
             } catch (PDOException $e) {
-                error_log("Error fetching joined competitons: " . var_export($e->errorInfo, true));
+                error_log("Error fetching scores: " . var_export($e->errorInfo, true));
             }
         ?>
         <h3>Score History</h3>
