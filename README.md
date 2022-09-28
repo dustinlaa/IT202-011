@@ -1,5 +1,5 @@
 # IT202-011
-Simple Arcade
+# Simple Arcade
 
 Designed and created a website using PHP, CSS, and Bootstrap for visual layouts and page 
 connections
